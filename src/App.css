@@ -1,38 +1,95 @@
-.App {
-  text-align: center;
+.bg-image {
+    background-image: url('http://localhost:3000/img/background.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100%;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.site-wrapper {
+    width: 80%;
+    margin: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(4px);
+    box-shadow: 0px 0px 25px 2px #000000;
+    border: 1px solid white;
+    border-radius: 5px;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.sections-wrapper {
+    width: 90%;
+    margin: auto;
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.sections-wrapper > div {
+    flex: 40%;
 }
-
-.App-link {
-  color: #61dafb;
+.popular-article {
+    border: 1px dotted white;
+    border-radius: 5px;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 25px;
+    margin: 30px;
+    width: 100%;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.article-header {
+    margin-top: 0px;
+    padding: 0px;
+}
+.header-container {
+    display: flex;
+    justify-content: space-between;
+}
+.site-logo {
+    font-weight: 700;
+    font-style: normal;
+    font-size: 80px;
+    margin-left: 30px;
+    margin-top: 20px;
+}
+nav {
+    margin-right: 20px;
+    margin-top: 50px;
+}
+.site-nav-link {
+    text-decoration: none;
+    font-size: 20px;
+    font-weight:100;
+    margin: 10px;
+    border: 1px solid white;
+    border-top-right-radius: 7px;
+    border-bottom-right-radius: 7px;
+    border-bottom-left-radius: 7px;
+    border-style:dotted;
+    padding: 10px;
+    max-width: 100px;
+}
+.site-nav-link:hover {
+    background-color: white;
+    color: #161616;
+    text-decoration: none;
+    margin: 10px;
+    box-shadow: 2px 2px white;
+    transition: 0.3s;
+}
+.separation-line {
+    border-top: 1px;
+    border-bottom: 0px;
+    border-left: 0px;
+    border-right: 0px;
+    width: 100%;
+    border-style: dotted;
+    margin: auto;
+    margin-top: 20px;
+}
+.site-footer > p {
+    text-align: center;
+}
+.site-content {
+    width: 90%;
+    margin: auto;
+    padding-top: 30px;
+}
+.home-heading {
+    text-align: center;
 }
