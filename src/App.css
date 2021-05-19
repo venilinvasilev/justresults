@@ -1,10 +1,4 @@
-.bg-image {
-    background-image: url('http://localhost:3000/img/background.jpg');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: 100%;
-}
+
 .header-container {
     padding-bottom: 1px;
 }

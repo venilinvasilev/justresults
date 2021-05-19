@@ -3,16 +3,17 @@
     font-family: muli, sans-serif;
     color: aliceblue;
 }
-body {
+html, body {
     padding: 0;
     margin: 0;
     height: 100%;
+    width: 100%;   
+    background: url('http://localhost:3000/img/background.jpg') no-repeat center center fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment:fixed;
+    background-size: cover;
     background-color: black;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-}
-
-code {
-    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
 }

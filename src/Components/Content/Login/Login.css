@@ -1,0 +1,89 @@
+
+form {
+	max-width: 30rem;
+    margin: auto;
+    width: 50%;
+    padding: auto;
+}
+
+form,
+form fieldset,
+form legend,
+form label,
+form input,
+form textarea,
+form select {
+	display: block;
+}
+
+form fieldset,
+form legend {
+	border-radius: 0.3rem;
+}
+
+form fieldset {
+	padding: 1.5em 2em 1.5em 2em;
+	position: relative;
+}
+
+form label {
+	font-weight: bold;
+    font-size: 17px;
+    margin-bottom: 10px;
+}
+
+.field .input {
+	display: flex;
+	position: relative;
+	align-items: center;
+    
+}
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    color: white;
+    font-style: italic;
+}
+
+.field .input:after {
+	display: block;
+	content: '';
+}
+
+
+.field .input input {
+	border-radius: 5px;
+    border: 1px;
+    border-color: white;
+	flex: 1 1 auto;
+	padding: 0.8rem;
+	outline: none;
+	background: rgba(255,255,255, 0.5);
+	z-index: 2;
+	order: 2;
+}
+.submit {
+    border-radius: 5px;
+    border: 1px;
+    padding: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin: auto;
+    margin-top: 30px;
+    font-size: 17px;
+    background-color: rgba(255, 255, 0, 0.712);
+    color: #161616;
+}
+.submit:hover {
+    background-color: rgba(0, 255, 21, 0.712);
+    transition: 0.3s;
+}
+.not-a-member {
+    margin-top: 20px;
+    text-align: center;
+}
+.not-a-member > a {
+    text-decoration: none;
+    font-weight: bold;
+}
+.not-a-member > a:hover {
+    color:rgba(0, 255, 21, 0.712);
+}
