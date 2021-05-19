@@ -5,6 +5,9 @@
     background-size: cover;
     height: 100%;
 }
+.header-container {
+    padding-bottom: 1px;
+}
 .site-wrapper {
     width: 80%;
     margin: auto;
@@ -36,41 +39,12 @@
     margin-top: 0px;
     padding: 0px;
 }
-.header-container {
-    display: flex;
-    justify-content: space-between;
-}
 .site-logo {
     font-weight: 700;
     font-style: normal;
     font-size: 80px;
     margin-left: 30px;
-    margin-top: 20px;
-}
-nav {
-    margin-right: 20px;
-    margin-top: 50px;
-}
-.site-nav-link {
-    text-decoration: none;
-    font-size: 20px;
-    font-weight:100;
-    margin: 10px;
-    border: 1px solid white;
-    border-top-right-radius: 7px;
-    border-bottom-right-radius: 7px;
-    border-bottom-left-radius: 7px;
-    border-style:dotted;
-    padding: 10px;
-    max-width: 100px;
-}
-.site-nav-link:hover {
-    background-color: white;
-    color: #161616;
-    text-decoration: none;
-    margin: 10px;
-    box-shadow: 2px 2px white;
-    transition: 0.3s;
+    margin-top: 30px;
 }
 .separation-line {
     border-top: 1px;
