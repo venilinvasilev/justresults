@@ -13,7 +13,9 @@ function Navigation() {
                 <NavLink className="site-nav-link" activeClassName="site-active-nav-link" to="/calculator">Calculator</NavLink>
             </div>
             <div className="right-nav">
-                <NavLink className="site-nav-link" activeClassName="site-active-nav-link" to="/sign-in">Sign In</NavLink>
+                <NavLink className="site-nav-link" activeClassName="site-active-nav-link" exact to="/login">Login</NavLink>
+                <NavLink className="site-nav-link" activeClassName="site-active-nav-link" exact to="/register">Register</NavLink>
+                <NavLink className="site-nav-link" activeClassName="site-active-nav-link" exact to="/logout">Logout</NavLink>
             </div>
         </nav>
     );

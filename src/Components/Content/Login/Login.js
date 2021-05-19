@@ -1,11 +1,25 @@
 import './Login.css';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
+import { auth } from '../../../utils/firebase';
 function Login() {
+    const history = useHistory();
+    const onSubmitLoginHandler = async (e) => {
+        e.preventDefault();
+        const email = e.target.email.value;
+        const password = e.target.password.value;
+        try {
+            await auth.signInWithEmailAndPassword(email, password);
+            history.push('/');
+
+        } catch (err) {
+            console.log(err.message);
+        }
+    }
     return (
         <section className='sign-in-section'>
-            <form className='login-form'>
+            <form onSubmit={onSubmitLoginHandler} className='login-form'>
                 <fieldset>
-                    <legend>Sign-In</legend>
+                    <legend>Login</legend>
                     <p className="field">
                         <label htmlFor='email'>Email</label>
                         <span className="input">
