@@ -1,19 +1,13 @@
 import './Login.css';
 import { Link, useHistory } from 'react-router-dom';
-import { auth } from '../../../utils/firebase';
+import { loginUser } from '../../../utils/firebase/data';
 function Login() {
     const history = useHistory();
-    const onSubmitLoginHandler = async (e) => {
+    const onSubmitLoginHandler = (e) => {
         e.preventDefault();
         const email = e.target.email.value;
         const password = e.target.password.value;
-        try {
-            await auth.signInWithEmailAndPassword(email, password);
-            history.push('/');
-
-        } catch (err) {
-            console.log(err.message);
-        }
+        loginUser(email, password).then(() => history.push('/')).catch(err => console.log(err.message));
     }
     return (
         <section className='sign-in-section'>

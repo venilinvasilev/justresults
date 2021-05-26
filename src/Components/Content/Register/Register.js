@@ -1,20 +1,16 @@
 import './Register.css';
 
 import { Link, useHistory } from 'react-router-dom';
-import { auth } from '../../../utils/firebase';
+import { registerUser } from '../../../utils/firebase/data';
 
 function Register() {
     const history = useHistory();
-    const onSubmitRegisterHandler = async (ev) => {
+    const onSubmitRegisterHandler = (ev) => {
         ev.preventDefault();
+        const username = ev.target.username.value;
         const email = ev.target.email.value;
-        const password = ev.target.email.value;
-        try {
-            await auth.createUserWithEmailAndPassword(email, password);
-            history.push('/')
-        } catch (err) {
-            console.log(err.message);
-        }
+        const password = ev.target.password.value;
+        registerUser(username, email, password).then(() => history.push('/')).catch((err) => console.log);    
     }
 
     return (
@@ -22,6 +18,12 @@ function Register() {
             <form onSubmit={onSubmitRegisterHandler}className='login-form'>
                 <fieldset>
                     <legend>Register</legend>
+                    <p className="field">
+                        <label htmlFor='username'>Username</label>
+                        <span className="input">
+                            <input type="text" name="username" placeholder="Your username..." />
+                        </span>
+                    </p>
                     <p className="field">
                         <label htmlFor='email'>Email</label>
                         <span className="input">
