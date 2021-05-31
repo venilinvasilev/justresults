@@ -16,3 +16,7 @@ export function registerUser(username, email, password) {
 export function getUserInfo(uid) {
     return database.ref().child('users').child(uid).get().then((snapshot) => snapshot.val());
 }
+
+export function addWorkout(data) {
+    return database.ref('workouts').push(data).catch(err => console.log(err.message));
+}

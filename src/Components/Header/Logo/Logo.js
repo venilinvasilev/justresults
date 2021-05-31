@@ -1,8 +1,8 @@
-import './Logo.css';
+import styles from './Logo.module.css';
 
 function Logo() {
     return (
-        <div className="site-logo">#JustResults</div>
+        <div className={styles.siteLogo}>#JustResults</div>
     );
 }
 

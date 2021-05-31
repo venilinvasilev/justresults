@@ -1,0 +1,25 @@
+.homeHeading {
+    text-align: center;
+}
+.sectionsWrapper {
+    width: 90%;
+    margin: auto;
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+}
+.sectionsWrapper > div {
+    flex: 40%;
+}
+.popularArticle {
+    border: 1px dotted white;
+    border-radius: 5px;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 25px;
+    margin: 30px;
+    width: 100%;
+}
+.articleHeader {
+    margin-top: 0px;
+    padding: 0px;
+}

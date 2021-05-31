@@ -1,4 +1,4 @@
-import './Navigation.css';
+import styles from './Navigation.module.css';
 
 import { useContext } from 'react';
 import { UserCtx } from '../../../App';
@@ -7,28 +7,28 @@ import { NavLink } from 'react-router-dom';
 function Navigation() {
     const userInfo = useContext(UserCtx);
     return (
-        <nav>
-            <div className="left-nav">
-                <NavLink className="site-nav-link" activeClassName="site-active-nav-link" exact to="/">Home</NavLink>
-                <NavLink className="site-nav-link" activeClassName="site-active-nav-link" to="/workouts">Workout Programs</NavLink>
+        <nav className={styles.navWrapper}>
+            <div>
+                <NavLink className={styles.siteNavLink} activeClassName={styles.siteActiveNavLink} exact to="/">Home</NavLink>
+                <NavLink className={styles.siteNavLink} activeClassName={styles.siteActiveNavLink} to="/workouts">Workout Programs</NavLink>
                 {userInfo?.email ?
-                    <NavLink className="site-nav-link" activeClassName="site-active-nav-link" to="/create-workout">Create Workout</NavLink>
+                    <NavLink className={styles.siteNavLink} activeClassName={styles.siteActiveNavLink} to="/create-workout">Create Workout</NavLink>
                     : 
                     ''
                 }
-                <NavLink className="site-nav-link" activeClassName="site-active-nav-link" to="/exercises">Exercise Catalog</NavLink>
-                <NavLink className="site-nav-link" activeClassName="site-active-nav-link" to="/calculator">Calculator</NavLink>
+                <NavLink className={styles.siteNavLink} activeClassName={styles.siteActiveNavLink} to="/exercises">Exercise Catalog</NavLink>
+                <NavLink className={styles.siteNavLink} activeClassName={styles.siteActiveNavLink} to="/calculator">Calculator</NavLink>
             </div>
-            <div className="right-nav">
+            <div>
                 {userInfo?.email ?
                     <>
                     <span>Wellcome back, {userInfo.username}!</span>
-                    <NavLink className="site-nav-link" activeClassName="site-active-nav-link" exact to="/logout">Logout</NavLink>
+                    <NavLink className={styles.siteNavLink} activeClassName={styles.siteActiveNavLink} exact to="/logout">Logout</NavLink>
                     </>
                     :
                     <div>
-                        <NavLink className="site-nav-link" activeClassName="site-active-nav-link" exact to="/login">Login</NavLink>
-                        <NavLink className="site-nav-link" activeClassName="site-active-nav-link" exact to="/register">Register</NavLink>
+                        <NavLink className={styles.siteNavLink} activeClassName={styles.siteActiveNavLink} exact to="/login">Login</NavLink>
+                        <NavLink className={styles.siteNavLink} activeClassName={styles.siteActiveNavLink} exact to="/register">Register</NavLink>
                     </div>
                 }
 

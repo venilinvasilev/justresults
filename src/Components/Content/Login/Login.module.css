@@ -1,53 +1,42 @@
-
-form {
+.loginForm {
 	max-width: 30rem;
     margin: auto;
     width: 50%;
     padding: auto;
+    display: block;
 }
 
-form,
-form fieldset,
-form legend,
-form label,
-form input,
-form textarea,
-form select {
-	display: block;
-}
-
-form fieldset,
-form legend {
-	border-radius: 0.3rem;
-}
-
-form fieldset {
-	padding: 1.5em 2em 1.5em 2em;
+.loginFieldset {
+    padding: 1.5em 2em 1.5em 2em;
 	position: relative;
+    border-radius: 0.3rem;
+    display: block;
+}
+.loginLegend {
+    border-radius: 0.3rem;
+    display: block;
 }
 
-form label {
+.inputLabel {
 	font-weight: bold;
     font-size: 17px;
     margin-bottom: 10px;
 }
 
-.field .input {
+.input {
 	display: flex;
 	position: relative;
-	align-items: center;
-    
+	align-items: center; 
 }
 ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
     color: white;
     font-style: italic;
 }
 
-.field .input:after {
+.input:after {
 	display: block;
 	content: '';
 }
-
 
 .field .input input {
 	border-radius: 5px;
@@ -66,8 +55,9 @@ form label {
     padding: 10px;
     padding-left: 15px;
     padding-right: 15px;
-    margin: auto;
-    margin-top: 30px;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 5px;
     font-size: 17px;
     background-color: rgba(255, 255, 0, 0.712);
     color: #161616;
@@ -75,15 +65,16 @@ form label {
 .submit:hover {
     background-color: rgba(0, 255, 21, 0.712);
     transition: 0.3s;
+    cursor: pointer;
 }
-.not-a-member {
+.notAMember {
     margin-top: 20px;
     text-align: center;
 }
-.not-a-member > a {
+.notAMember > a {
     text-decoration: none;
     font-weight: bold;
 }
-.not-a-member > a:hover {
+.notAMember > a:hover {
     color:rgba(0, 255, 21, 0.712);
 }

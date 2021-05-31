@@ -1,4 +1,4 @@
-import './App.css';
+import styles from './App.module.css';
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 import './utils/firebase';
@@ -16,7 +16,10 @@ function App() {
         auth.onAuthStateChanged((user) => {
             if (user) {
                 getUserInfo(user.uid)
-                    .then((data) => setUserInfo(data))
+                    .then((data) => {
+                        data.uid = user.uid;
+                        setUserInfo(data)
+                    })
                     .catch(err => console.log(err.message));
             } else {
                 setUserInfo();
@@ -25,18 +28,18 @@ function App() {
     }, []);
     return (
         <Router>
-            <div className="site-wrapper">
+            <div className={styles.siteWrapper}>
                 <UserCtx.Provider value={userInfo}>
                     <Header />
-                    <hr className="separation-line" />
+                    <hr className={styles.separationLine} />
                     <Content />
                 </UserCtx.Provider>
                 <Footer />
             </div>
             <Route path="/logout" exact render={props => {
-                auth.signOut();
-                return <Redirect to='/' />;
-            }
+                    auth.signOut();
+                    return <Redirect to='/' />;
+                }
             } />
         </Router>
     );

@@ -1,4 +1,4 @@
-import './Content.css';
+import styles from './Content.module.css';
 
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
@@ -9,7 +9,7 @@ import Register from './Register';
 import CreateWorkout from './CreateWorkout';
 function Content() {
     return (
-        <div className="site-content">
+        <div className={styles.siteContent}>
                 <Switch>
                     <Route path="/" exact component={Home} />
                     <Route path="/login" exact component={Login} />

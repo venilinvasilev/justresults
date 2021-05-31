@@ -1,0 +1,80 @@
+.registerForm {
+	max-width: 30rem;
+    margin: auto;
+    width: 50%;
+    padding: auto;
+    display: block;
+}
+
+.registerFieldset {
+    padding: 1.5em 2em 1.5em 2em;
+	position: relative;
+    border-radius: 0.3rem;
+    display: block;
+}
+.registerLegend {
+    border-radius: 0.3rem;
+    display: block;
+}
+
+.inputLabel {
+	font-weight: bold;
+    font-size: 17px;
+    margin-bottom: 10px;
+}
+
+.input {
+	display: flex;
+	position: relative;
+	align-items: center; 
+}
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    color: white;
+    font-style: italic;
+}
+
+.input:after {
+	display: block;
+	content: '';
+}
+
+.field .input input {
+	border-radius: 5px;
+    border: 1px;
+    border-color: white;
+	flex: 1 1 auto;
+	padding: 0.8rem;
+	outline: none;
+	background: rgba(255,255,255, 0.5);
+	z-index: 2;
+	order: 2;
+}
+.submit {
+    border-radius: 5px;
+    border: 1px;
+    padding: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 5px;
+    font-size: 17px;
+    background-color: rgba(255, 255, 0, 0.712);
+    color: #161616;
+}
+.submit:hover {
+    background-color: rgba(0, 255, 21, 0.712);
+    transition: 0.3s;
+    cursor: pointer;
+}
+.notAMember {
+    margin-top: 20px;
+    text-align: center;
+}
+.notAMember > a {
+    text-decoration: none;
+    font-weight: bold;
+}
+.notAMember > a:hover {
+    color:rgba(0, 255, 21, 0.712);
+}

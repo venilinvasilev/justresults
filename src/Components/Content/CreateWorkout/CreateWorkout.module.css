@@ -1,0 +1,147 @@
+.createForm {
+	max-width: 50rem;
+    margin: auto;
+    width: 70%;
+    padding: auto;
+    display: block;
+}
+
+.createFieldset {
+    padding: 1.5em 2em 1.5em 2em;
+	position: relative;
+    border-radius: 0.3rem;
+    display: block;
+}
+.createLegend {
+    border-radius: 0.3rem;
+    display: block;
+}
+.twoColumnInputs {
+    display: flex;
+    justify-content: space-between;
+}
+.fourColumnWrapper {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+.fourColumnWrapper input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+  }
+.threeColumnWrapper {
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+}
+.inputLabel {
+	font-weight: bold;
+    font-size: 17px;
+}
+.inputViewTwo {
+    width: 48%;
+}
+.divInput {
+    margin-top: 5px;
+    display: flex;
+}
+.inputViewTwo input {
+    font-size: 17px;
+    font-weight: 900;
+	border-radius: 5px;
+    border: 1px;
+    border-color: white;
+	flex: 1 1 auto;
+	padding: 0.8rem;
+	outline: none;
+	background: rgba(255,255,255, 0.5);
+	z-index: 2;
+	order: 2;
+}
+.fieldWrapper {
+    width: 30px;
+}
+.oneColumnWrapper {
+    width: 49%;
+}
+.threeColumnWrapper {
+    width: 40%;
+    margin-right: 26px;
+}
+.fourColumnWrapper input {
+    font-size: 17px;
+    font-weight: 900;
+	border-radius: 5px;
+    border: 1px;
+    border-color: white;
+	flex: 1 1 auto;
+	padding: 0.8rem;
+	outline: none;
+	background: rgba(255,255,255, 0.5);
+	z-index: 2;
+	order: 2;
+}
+.threeColumnWrapper input {
+    width: 30px;
+}
+.input {
+    margin-top: 5px;
+	display: flex;
+	position: relative;
+	align-items: center; 
+}
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    color: white;
+    font-style: italic;
+    font-weight: normal;
+}
+
+.input:after {
+	display: block;
+	content: '';
+}
+
+.field .input textarea {
+	border-radius: 5px;
+    border: 1px;
+    font-size: 17px;
+    font-weight: 900;
+    min-height: 200px;
+    max-height: 400px;
+    max-width: 667px;
+    border-color: white;
+	flex: 1 1 auto;
+	padding: 0.8rem;
+	outline: none;
+	background: rgba(255,255,255, 0.5);
+	z-index: 2;
+	order: 2;
+}
+.submit {
+    border-radius: 5px;
+    border: 1px;
+    padding: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 5px;
+    font-size: 17px;
+    background-color: rgba(255, 255, 0, 0.712);
+    color: #161616;
+}
+.submit:hover {
+    background-color: rgba(0, 255, 21, 0.712);
+    transition: 0.3s;
+    cursor: pointer;
+}
+.notAMember {
+    margin-top: 20px;
+    text-align: center;
+}
+.notAMember > a {
+    text-decoration: none;
+    font-weight: bold;
+}
+.notAMember > a:hover {
+    color:rgba(0, 255, 21, 0.712);
+}
