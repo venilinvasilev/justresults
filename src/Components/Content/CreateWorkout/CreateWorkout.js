@@ -7,6 +7,7 @@ import { UserCtx } from '../../../App';
 import { addWorkout } from '../../../utils/firebase/data';
 function CreateWorkout() {
     const userInfo = useContext(UserCtx);
+    console.log(userInfo);
     const history = useHistory();
     const [exercises, setExercises] = useState([1]);
     function addExercise() {
@@ -23,10 +24,12 @@ function CreateWorkout() {
             goal: form.goal.value,
             description: form.description.value,
             exercises: {},
-            ownerId: userInfo.uid
+            ownerId: userInfo.uid,
+            ownerName: userInfo.username,
+            dateAdded: Date.now()
         }
         for (const exercise of exercises) {
-            data.exercises[exercise] = {
+            data.exercises[exercise - 1] = {
                 name: form[`exercise_${exercise}`].value,
                 sets: form[`sets_${exercise}`].value,
                 reps: form[`reps_${exercise}`].value,
