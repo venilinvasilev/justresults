@@ -20,3 +20,6 @@ export function getUserInfo(uid) {
 export function addWorkout(data) {
     return database.ref('workouts').push(data).catch(err => console.log(err.message));
 }
+export function getWorkouts() {
+    return database.ref('workouts').get().then((snapshot) => snapshot.val()).catch(err => console.log(err.message));
+}

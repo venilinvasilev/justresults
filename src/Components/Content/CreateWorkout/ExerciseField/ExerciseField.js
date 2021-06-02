@@ -4,7 +4,7 @@ function ExerciseField(props) {
     return (
         <div className={styles.fourColumnWrapper}>
             <div className={styles.oneColumnWrapper}>
-                <label htmlFor={`exercise_${props.id}`} className={styles.inputLabel}>Exercise</label>
+                <label htmlFor={`exercise_${props.id}`} className={styles.inputLabel}>Exercise #{props.id}</label>
                 <div className={styles.divInput}>
                     <input type="text" name={`exercise_${props.id}`} id={`exercise_${props.id}`} />
                 </div>

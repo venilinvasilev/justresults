@@ -1,0 +1,29 @@
+.workoutCardWrapper {
+    border: 1px dotted white;
+    border-radius: 5px;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    margin: 30px;
+    width: 90%;
+}
+.workoutCardHeading {
+    margin-top: 0px;
+    padding: 0px;
+}
+.workoutCardDescription {
+    display: inline;
+}
+.workoutInfo {
+    margin-top: 20px;
+}
+.workoutInfo > span > strong {
+    display: inline;
+    margin: 5px;
+}
+.workoutInfo > span > p {
+    display: inline;
+    margin: 5px;
+}
+.workoutInfo > span {
+    margin: auto;
+}
