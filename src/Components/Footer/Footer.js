@@ -4,7 +4,7 @@ function Footer() {
     return (
         <footer>
             <div className={styles.siteFooter}>
-                <p>Site created by Venko Zmeya All rights reserved</p>
+                <p>Site created by V.Vasilev rights reserved</p>
             </div>
         </footer>
     );

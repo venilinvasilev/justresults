@@ -8,6 +8,7 @@ import Login from './Login';
 import Register from './Register';
 import CreateWorkout from './CreateWorkout';
 import WorkoutsList from './WorkoutsList';
+import WorkoutDetails from './WorkoutDetails';
 
 function Content() {
     return (
@@ -18,6 +19,7 @@ function Content() {
                     <Route path="/register" exact component={Register} />
                     <Route path="/create-workout" exact component={CreateWorkout} />
                     <Route path="/workouts" exact component={WorkoutsList} />
+                    <Route path="/workouts/:id" component={WorkoutDetails} />
                 </Switch>
         </div>
     );

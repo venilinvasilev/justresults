@@ -15,7 +15,7 @@ function WorkoutsList() {
         <div className={styles.workoutsWrapper}>
             <h2 className={styles.workoutsPageHeading}>Workouts</h2>
             {workouts && Object.keys(workouts).length ?
-                Object.keys(workouts).map(workout => <WorkoutCard key={workout} {...workouts[workout]} />) :
+                Object.keys(workouts).map(workout => <WorkoutCard id={workout} key={workout} {...workouts[workout]} />) :
                 <p>Loading workouts...</p>
             }
         </div>
@@ -23,4 +23,3 @@ function WorkoutsList() {
 }
 
 export default WorkoutsList;
-//

@@ -23,6 +23,7 @@ function CreateWorkout() {
             name: form.name.value,
             goal: form.goal.value,
             description: form.description.value,
+            likes: 0,
             exercises: {},
             ownerId: userInfo.uid,
             ownerName: userInfo.username,

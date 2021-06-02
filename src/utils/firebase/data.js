@@ -23,3 +23,6 @@ export function addWorkout(data) {
 export function getWorkouts() {
     return database.ref('workouts').get().then((snapshot) => snapshot.val()).catch(err => console.log(err.message));
 }
+export function getWorkout(id) {
+    return database.ref('workouts').child(id).get().then((snapshot) => snapshot.val()).catch(err => console.log(err.message));
+}
