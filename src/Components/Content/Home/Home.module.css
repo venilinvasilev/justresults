@@ -2,13 +2,14 @@
     text-align: left;
     letter-spacing: 0.2px;
     border-top-left-radius: 5px;
-    background-color: yellow;
+    background-color: rgba(255, 255, 0, 0.85);
+    border: 1px solid white;
     display: inline-block;
     padding: 8px;
     padding-right: 25px;
     margin: 0px;
     color: black;
-    clip-path: polygon(0 1%, 100% 0, 90% 100%, 0% 100%);    
+    clip-path: polygon(0 1%, 100% 0, 90% 100%, 0% 100%);
 }
 .homeWrapper {
     width: 90%;
@@ -25,8 +26,10 @@
 }
 .welcomeContent {
     text-align: center;
-    font-size: 17px;
+    font-size: 18px;
     font-weight: 300;
     margin: 50px;
     margin-top: 25px;
+    letter-spacing: 0.1px;
+    line-height: auto;
 }

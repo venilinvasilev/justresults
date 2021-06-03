@@ -1,18 +1,47 @@
 .workoutCardWrapper {
-    border: 1px dotted white;
+    border: 1px solid white;
     border-radius: 5px;
     background-color: rgba(0, 0, 0, 0.5);
     padding: 20px;
     margin: 30px;
     width: 90%;
     text-decoration: none;
+    display: block;
+}
+.workoutCardWrapper:hover {
+    border: 1px solid white;
+    border-radius: 5px;
+    background-color: rgba(229, 255, 0, 0.85) ;
+    transition: 0.2s;
+}
+.workoutCardWrapper:hover .workoutCardHeading {
+    color: black;
+    transition: 0.2s;
+}
+.workoutCardWrapper:hover .workoutCardDescription {
+    color: black;
+    transition: 0.2s;
+}
+.workoutCardWrapper:hover .workoutInfo > span > p {
+    color: black;
+    transition: 0.2s;
+}
+.workoutCardWrapper:hover .workoutInfo > span > strong {
+    color: black;
+    transition: 0.2s;
+}
+.workoutCardWrapper:hover .workoutInfo > span {
+    color: black;
+    transition: 0.2s;
 }
 .workoutCardHeading {
     margin-top: 0px;
     padding: 0px;
+    color: inherit;
 }
 .workoutCardDescription {
     display: inline;
+    color: inherit;
 }
 .workoutInfo {
     margin-top: 20px;
