@@ -6,17 +6,16 @@ import { NavLink } from 'react-router-dom';
 
 function Navigation() {
     const userInfo = useContext(UserCtx);
-    return (
+    return (userInfo ?
         <nav className={styles.navWrapper}>
             <div>
-                <NavLink className={styles.siteNavLink} activeClassName={styles.siteActiveNavLink} exact to="/">Home</NavLink>
                 <NavLink className={styles.siteNavLink} activeClassName={styles.siteActiveNavLink} to="/workouts">Workout Programs</NavLink>
+                {console.log(userInfo)}
                 {userInfo?.email ?
                     <NavLink className={styles.siteNavLink} activeClassName={styles.siteActiveNavLink} to="/create-workout">Create Workout</NavLink>
                     : 
                     ''
                 }
-                <NavLink className={styles.siteNavLink} activeClassName={styles.siteActiveNavLink} to="/exercises">Exercise Catalog</NavLink>
                 <NavLink className={styles.siteNavLink} activeClassName={styles.siteActiveNavLink} to="/calculator">Calculator</NavLink>
             </div>
             <div>
@@ -33,8 +32,9 @@ function Navigation() {
                 }
 
             </div>
-        </nav>
-    );
+        </nav> :
+        ''
+    )
 }
 
 export default Navigation;

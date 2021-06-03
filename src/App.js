@@ -22,7 +22,7 @@ function App() {
                     })
                     .catch(err => console.log(err.message));
             } else {
-                setUserInfo();
+                setUserInfo('guest');
             }
         });
     }, []);

@@ -13,7 +13,7 @@ function WorkoutExercises({
                 <th>Reps</th>
                 <th>Rest</th>
             </tr>
-            {exercises.map(exercise => <ExerciseRow {...exercise}/>)}
+            {exercises.map((exercise, i) => <ExerciseRow key={i} index={i} {...exercise}/>)}
         </table>
     );
 } 

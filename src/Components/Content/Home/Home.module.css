@@ -1,25 +1,32 @@
 .homeHeading {
-    text-align: center;
+    text-align: left;
+    letter-spacing: 0.2px;
+    border-top-left-radius: 5px;
+    background-color: yellow;
+    display: inline-block;
+    padding: 8px;
+    padding-right: 25px;
+    margin: 0px;
+    color: black;
+    clip-path: polygon(0 1%, 100% 0, 90% 100%, 0% 100%);    
 }
-.sectionsWrapper {
+.homeWrapper {
     width: 90%;
     margin: auto;
-    margin-top: 20px;
     display: flex;
     flex-wrap: wrap;
 }
-.sectionsWrapper > div {
-    flex: 40%;
-}
-.popularArticle {
-    border: 1px dotted white;
+.homeSection {
+    border: 1px solid silver;
     border-radius: 5px;
-    background-color: rgba(0, 0, 0, 0.5);
-    padding: 25px;
-    margin: 30px;
-    width: 100%;
-}
-.articleHeader {
-    margin-top: 0px;
+    background-color: rgba(0, 0, 0, 0.8);
     padding: 0px;
+    margin: auto;
+}
+.welcomeContent {
+    text-align: center;
+    font-size: 17px;
+    font-weight: 300;
+    margin: 50px;
+    margin-top: 25px;
 }

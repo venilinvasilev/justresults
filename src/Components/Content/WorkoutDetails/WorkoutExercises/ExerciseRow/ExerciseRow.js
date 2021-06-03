@@ -3,10 +3,11 @@ import styles from './ExerciseRow.module.css';
 function ExerciseRow(props) {
     return (
         <tr>
-            <td>asd</td>
-            <td>dsa</td>
-            <td>asd</td>
-            <td>dsa</td>
+            <td>{props.index}</td>
+            <td>{props.name}</td>
+            <td>{props.sets}</td>
+            <td>{props.reps}</td>
+            <td>{props.rest}</td>
         </tr>
     );
 }

@@ -17,7 +17,11 @@ function WorkoutDetails() {
         <div className={styles.workoutDetailsContainer}>
             <h2>{workout.name}</h2>
             <p>{workout.description}</p>
-            <WorkoutExercises />
+            <WorkoutExercises exercises={workout.exercises}/>
+            <div>
+                <span>Date:</span>
+                <span>Author:{workout.author}</span>
+            </div>
         </div>
         :
         <div>Loading... </div>
