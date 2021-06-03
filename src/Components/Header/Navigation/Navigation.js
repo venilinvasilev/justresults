@@ -10,7 +10,6 @@ function Navigation() {
         <nav className={styles.navWrapper}>
             <div>
                 <NavLink className={styles.siteNavLink} activeClassName={styles.siteActiveNavLink} to="/workouts">Workout Programs</NavLink>
-                {console.log(userInfo)}
                 {userInfo?.email ?
                     <NavLink className={styles.siteNavLink} activeClassName={styles.siteActiveNavLink} to="/create-workout">Create Workout</NavLink>
                     : 

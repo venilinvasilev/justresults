@@ -12,7 +12,7 @@
     clip-path: polygon(0 1%, 100% 0, 90% 100%, 0% 100%);
 }
 .homeWrapper {
-    width: 90%;
+    width: 80%;
     margin: auto;
     display: flex;
     flex-wrap: wrap;

@@ -31,7 +31,6 @@ function App() {
             <div className={styles.siteWrapper}>
                 <UserCtx.Provider value={userInfo}>
                     <Header />
-                    <hr className={styles.separationLine} />
                     <Content />
                 </UserCtx.Provider>
                 <Footer />
