@@ -26,3 +26,30 @@ export function getWorkouts() {
 export function getWorkout(id) {
     return database.ref('workouts').child(id).get().then((snapshot) => snapshot.val()).catch(err => console.log(err.message));
 }
+export function createArticle(data) {
+    return database.ref('articles').push(data).catch(err => console.log(err.message));
+}
+export function getArticles() {
+    return database.ref('articles').get().then((snapshot) => snapshot.val()).catch(err => console.log(err.message));
+}
+export function getArticle(id) {
+    return database.ref('articles').child(id).get().then((snapshot) => snapshot.val()).catch(err => console.log(err.message));
+}
+export function updateLikes(id, uid) {
+    return database.ref('articles').child(id).child('likes').get()
+        .then((snapshot) => Number(snapshot.val()) + 1)
+        .then((newLikes) => {
+            database.ref('articles').child(id).child('likes').set(newLikes)
+            database.ref('users').child(uid).child('likes').child(id).set(true);
+        })
+        .catch(err => console.log(err.message));
+}
+export function getUserLiked(uid, id) {
+    return database.ref('users').child(uid).child('likes').child(id).get()
+    .then((snapshot) => {
+        if(snapshot.exists()) {
+            return true;
+        }
+        return false;
+    }).catch((err) => console.log(err.message));
+}

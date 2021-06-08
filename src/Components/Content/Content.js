@@ -6,9 +6,12 @@ import { Switch, Route } from 'react-router-dom';
 import Home from './Home';
 import Login from './Login';
 import Register from './Register';
-import CreateWorkout from './CreateWorkout';
-import WorkoutsList from './WorkoutsList';
-import WorkoutDetails from './WorkoutDetails';
+//import CreateWorkout from './CreateWorkout';
+import CreateArticle from './CreateArticle';
+//import WorkoutsList from './WorkoutsList';
+import ArticleList from './ArticleList';
+//import WorkoutDetails from './WorkoutDetails';
+import ArticleDetails from './ArticleDetails';
 
 function Content() {
     return (
@@ -17,9 +20,9 @@ function Content() {
                     <Route path="/" exact component={Home} />
                     <Route path="/login" exact component={Login} />
                     <Route path="/register" exact component={Register} />
-                    <Route path="/create-workout" exact component={CreateWorkout} />
-                    <Route path="/workouts" exact component={WorkoutsList} />
-                    <Route path="/workouts/:id" component={WorkoutDetails} />
+                    <Route path="/create-article" exact component={CreateArticle} />
+                    <Route path="/articles" exact component={ArticleList} />
+                    <Route path="/articles/:id" component={ArticleDetails} />
                 </Switch>
         </div>
     );

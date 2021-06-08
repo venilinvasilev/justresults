@@ -1,0 +1,10 @@
+.articleListContainer {
+    width: 90%;
+    margin: auto;
+}
+.articleListHeading {
+    display: block;
+    text-align: center;
+    margin: auto;
+    margin-bottom: 30px;
+}

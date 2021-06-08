@@ -1,0 +1,44 @@
+.articleCardContainer {
+    border: 1px solid white;
+    border-radius: 5px;
+    padding: 0.8rem;
+    margin: auto;
+    margin-bottom: 30px;
+    width: 90%;
+    background-color: rgba(0, 0, 0, 0.712);
+}
+.articleCardTopic {
+    margin: 0px;
+    border-bottom: 1px solid white;
+    padding-bottom: 0.5rem;
+    text-align: center;
+    font-size: 20px;
+}
+.articleDescription {
+    margin: 20px;
+    font-size: 17px;
+}
+.articleInfo {
+    border-top: 1px solid white;
+    margin: auto;
+    padding-top: 20px;
+}
+.articleDate {
+    margin-right: 30px;
+}
+.articleAuthor {
+    margin-right: 30px;
+}
+.articleLikes {
+    margin-right: 30px;
+}
+.articleReadMore {
+    float: right;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 20px;
+}
+.articleReadMore:hover {
+    color: rgba(255, 255, 0, 0.712);
+    transition: 0.2s;
+}
