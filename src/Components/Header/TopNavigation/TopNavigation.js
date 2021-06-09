@@ -8,13 +8,19 @@ function TopNavigation() {
     const [menuStyles, setMenuStyles] = useState([styles.menu])
     const [dropDown, setDropdown] = useState(styles.dropDownMenuInactive);
     useEffect(() => {
-        window.addEventListener('click', (ev) =>{
-            if(dropDown == styles.dropDownMenuActive) {
-                console.log('sega')
-            }
-        })
+        window.addEventListener('click', handleClick);
+        return () => {
+            window.removeEventListener('click', handleClick);
+        }
     }, [])
+    const handleClick = (ev) => {
+        if(ev.target.tagName !== 'BUTTON' && ev.target.tagName !== 'svg' && ev.target.tagName !== 'path' && ev.target.tagName !== 'A') {
+            setDropdown(styles.dropDownMenuInactive);
+            setMenuStyles([styles.menu]);
+        }
+    }
     const toggleMenu = (ev) => {
+        ev.stopPropagation()
         setMenuStyles(oldStyles => {
             if (oldStyles.length > 1) {
                 setDropdown(styles.dropDownMenuInactive)
