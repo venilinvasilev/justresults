@@ -1,12 +1,24 @@
 import styles from './Login.module.css';
 import { Link, useHistory } from 'react-router-dom';
+import { useState } from 'react';
 import { loginUser } from '../../../utils/firebase/data';
+import ModalMessage from '../../Common/ModalMessage';
+
 function Login() {
     const history = useHistory();
+    const [errorMessage, setErrorMessage] = useState('');
+
     const onSubmitLoginHandler = (e) => {
         e.preventDefault();
         const email = e.target.email.value;
         const password = e.target.password.value;
+        if(!email || !password) {
+            setErrorMessage({
+                heading: 'Login failed!',
+                content: 'All fields are required.'
+            })
+            return;
+        }
         loginUser(email, password)
             .then(() => history.push('/'))
             .catch(err => console.log(err.message));
@@ -34,6 +46,8 @@ function Login() {
                     <p className={styles.notAMember}>Not a member ? Sign-Up <Link to="/register">here</Link> and stop missing out.</p>
                 </fieldset>
             </form>
+            {errorMessage ? <ModalMessage message={errorMessage} handleGotIt={() => {setErrorMessage('')}} /> : ' '}
+            
         </section>
     );
 }

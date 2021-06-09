@@ -35,7 +35,7 @@ function TopNavigation() {
             </button>
             <div className={dropDown}>
                 <Link className={styles.linkItem} to='/articles'>Articles</Link>
-                <Link className={styles.linkItem} to="/create-article">Create Article</Link>
+                <Link className={styles.linkItem} to="/create-article">Write an Article</Link>
                 <Link className={styles.linkItem} to="/calculator">Calculator</Link>
                 {!userInfo?.email ? <div>
                     <Link className={styles.linkItem} to="/login">Login</Link>
