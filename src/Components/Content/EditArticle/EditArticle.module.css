@@ -1,0 +1,62 @@
+.editArticleContainer {
+    width: 90%;
+    margin: auto;
+}
+.editArticleHeading {
+    margin: auto;
+    text-align: center;
+}
+.editArticleForm {
+    margin-top: 20px;
+    border: 1px solid white;
+    border-radius: 5px;
+    padding: 20px;
+}
+.newLineLabel {
+    display: block;
+    text-align: center;
+    margin-bottom: 15px;
+    font-size: 20px;
+    font-weight: 800;
+}
+.newLineInput {
+    display: block;
+    margin: auto;
+    margin-bottom: 15px;
+    width: 80%;
+    padding: 0.8rem;
+    outline: none;
+	background: rgba(255,255,255, 0.5);
+    font-size: 17px;
+    font-weight: 900;
+	border-radius: 5px;
+    border: 1px solid white;
+    
+}
+.newLineTextArea {
+    display: block;
+    margin: auto;
+    margin-bottom: 20px;
+    width: 80%;
+    height: 15rem;
+    padding: 0.8rem;
+    outline: none;
+	background: rgba(255,255,255, 0.5);
+    font-size: 17px;
+    font-weight: 900;
+	border-radius: 5px;
+    border: 1px solid white;
+    resize: vertical;
+}
+.submitButton {
+    display: block;
+    margin: auto;
+    font-size: 17px;
+    font-weight: 800;
+    padding: 0.8rem;
+    padding-left: 1.3rem;
+    padding-right: 1.3rem;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 0, 0.712);
+    color: black;
+}

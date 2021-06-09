@@ -3,11 +3,12 @@ import Loader from '../../Common/Loader';
 import ArticleContent from './ArticleContent';
 import { UserCtx } from '../../../App';
 import { useState, useEffect, useContext } from 'react';
-import { useParams } from 'react-router-dom';
-import { getArticle, updateLikes, getUserLiked } from '../../../utils/firebase/data';
+import { useParams, useHistory } from 'react-router-dom';
+import { getArticle, updateLikes, getUserLiked, deleteArticle } from '../../../utils/firebase/data';
 import { formatDate } from '../../../utils/misc';
 function ArticleDetails() {
     const userInfo = useContext(UserCtx);
+    const history = useHistory();
     const { id } = useParams();
     const [article, setArticle] = useState();
     const [likes, setLikes] = useState();
@@ -15,12 +16,12 @@ function ArticleDetails() {
     const [isOwner, setIsOwner] = useState(false);
 
     useEffect(() => {
-        if(userInfo && article && userInfo.uid === article.authorId) {
+        if (userInfo && article && userInfo.uid === article.authorId) {
             setIsOwner(true);
         }
     }, [article, userInfo])
     useEffect(() => {
-        if (userInfo) {
+        if (userInfo && userInfo !== 'guest') {
             getUserLiked(userInfo.uid, id).then((data) => setLiked(data));
         }
     }, [userInfo]);
@@ -39,6 +40,16 @@ function ArticleDetails() {
             setLiked(true);
         })
     }
+    const delArticle = (ev) => {
+        ev.preventDefault();
+        const confirmed = window.confirm('Are you sure you want to delete this article ?');
+        if (confirmed) {
+            deleteArticle(id).then(() => history.push('/articles'));
+        }
+    }
+    const goToEdit = () => {
+        history.push('/edit/' + id);
+    }
 
     return (
         <div className={styles.articleDetailsWrapper}>
@@ -48,20 +59,17 @@ function ArticleDetails() {
                     <h3 className={styles.articleDetailsDescription}>{article.description}</h3>
                     <ArticleContent content={article.content} />
                     <div className={styles.articleControls}>
-                        {!liked ?
+                        {!liked && userInfo !== 'guest' ?
                             <button onClick={addLike} title="Like" className={styles.likeButton}><i className="far fa-thumbs-up fa-2x"></i>Like</button> :
                             ''
                         }
                         {isOwner ?
-                        <span>
-                        <button title="Delete" className={styles.deleteButton}><i className="fas fa-trash-alt fa-2x"></i>Delete</button>
-                        <button title="Edit" className={styles.editButton}><i className="fas fa-edit fa-2x"></i>Edit</button>
-                        </span>
-                        :
-                        ''
+                            <span>
+                                <button onClick={delArticle} title="Delete" className={styles.deleteButton}><i className="fas fa-trash-alt fa-2x"></i>Delete</button>
+                                <button onClick={goToEdit} title="Edit" className={styles.editButton}><i className="fas fa-edit fa-2x"></i>Edit</button>
+                            </span> :
+                            ''
                         }
-                        
-                        
                     </div>
                     <div className={styles.articleInfo}>
                         <span className={styles.articleDate}>Date Published: {formatDate(article.dateCreated)}</span>

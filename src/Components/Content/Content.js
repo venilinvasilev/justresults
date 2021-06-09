@@ -12,7 +12,8 @@ import CreateArticle from './CreateArticle';
 import ArticleList from './ArticleList';
 //import WorkoutDetails from './WorkoutDetails';
 import ArticleDetails from './ArticleDetails';
-
+import EditArticle from './EditArticle';
+import Calculator from './Calculator';
 function Content() {
     return (
         <div className={styles.siteContent}>
@@ -23,6 +24,8 @@ function Content() {
                     <Route path="/create-article" exact component={CreateArticle} />
                     <Route path="/articles" exact component={ArticleList} />
                     <Route path="/articles/:id" component={ArticleDetails} />
+                    <Route path="/edit/:id" component={EditArticle} />
+                    <Route path="/calculator" exact component={Calculator} />
                 </Switch>
         </div>
     );

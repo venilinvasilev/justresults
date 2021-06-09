@@ -53,3 +53,10 @@ export function getUserLiked(uid, id) {
         return false;
     }).catch((err) => console.log(err.message));
 }
+export function deleteArticle(id) {
+    return database.ref('articles').child(id).remove()
+}
+export function editArticle(id, data) {
+    console.log(id)
+    return database.ref('articles').child(id).set(data);
+}

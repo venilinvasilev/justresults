@@ -1,0 +1,106 @@
+.calculatorWrapper {
+    margin: auto;
+    width: 90%;
+}
+.calculatorHeading {
+    text-align: center;
+    font-size: 33px;
+    margin: auto;
+    margin-bottom: 30px;
+}
+.calculatorForm {
+    margin: auto;
+    width: 80%;
+    border: 1px solid white;
+    border-radius: 5px;
+    padding: 30px;
+}
+.calculatorInputLabel {
+    display: block;
+    margin: auto;
+    margin-bottom: 15px;
+    text-align: center;
+}
+.calculatorInputField {
+    display: block;
+    margin: auto;
+    margin-bottom: 15px;
+    padding: 0.8rem;
+    width: 20rem;
+    border: 1px solid white;
+    border-radius: 5px;
+    color: white;
+    font-size: 17px;
+    background: rgba(255,255,255, 0.5);
+}
+.calculatorInputField::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+.sameLineInput {
+    display: inline-block;
+    border: 1px dotted white;
+    border-radius: 2px;
+    padding: 7px;
+    width: 20%;
+    
+    margin: 15px;
+    margin-top: 0px;
+    text-align: left;
+}
+.radioInputWrapper {
+    margin: auto;
+    margin-bottom: 15px;
+    width: 90%;
+}
+.radioInputWrapperOne {
+    text-align: center;
+}
+.newLineOptionWrapper {
+    border-radius: 2px;
+    width: 90%;
+    margin: auto;
+    text-align: left;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    border: 1px dotted white;
+    padding: 7px;
+}
+.newLineOptionWrapperTwo {
+    border-radius: 2px;
+    width: 50%;
+    margin: auto;
+    text-align: left;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    border: 1px dotted white;
+    padding: 5px;
+}
+.radioInput {
+    display: inline-block;
+}
+.buttonsWrapper {
+    margin: auto;
+    width: 90%;
+    text-align: center;
+}
+.submitButton {
+    display: inline-block;
+    border-radius: 5px;
+    border: 1px solid white;
+    padding: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-right: 15px;
+    margin-left: 15px;
+    margin-top: 5px;
+    font-size: 17px;
+    font-weight: 500;
+    background-color: rgba(255, 255, 0, 0.712);
+    color: #161616;
+}
+
+.submitButton:hover {
+    background-color: rgba(0, 255, 21, 0.712);
+    transition: 0.3s;
+    cursor: pointer;
+}
