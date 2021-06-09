@@ -12,17 +12,19 @@
     clip-path: polygon(0 1%, 100% 0, 90% 100%, 0% 100%);
 }
 .homeWrapper {
-    width: 80%;
+    width: 90%;
     margin: auto;
     display: flex;
     flex-wrap: wrap;
 }
 .homeSection {
+    width: 90%;
     border: 1px solid silver;
     border-radius: 5px;
     background-color: rgba(0, 0, 0, 0.8);
     padding: 0px;
     margin: auto;
+    margin-bottom: 30px;
 }
 .welcomeContent {
     text-align: center;
@@ -32,4 +34,13 @@
     margin-top: 25px;
     letter-spacing: 0.1px;
     line-height: auto;
+}
+.popularArticlesWrapper {
+    margin: auto;
+}
+.popularArticlesHeading {
+    display: block;
+    text-align: center;
+    margin: auto;
+    margin-bottom: 30px;
 }

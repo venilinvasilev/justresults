@@ -4,12 +4,12 @@
 }
 .calculatorHeading {
     text-align: center;
-    font-size: 33px;
     margin: auto;
     margin-bottom: 30px;
 }
 .calculatorForm {
     margin: auto;
+    margin-bottom: 30px;
     width: 80%;
     border: 1px solid white;
     border-radius: 5px;

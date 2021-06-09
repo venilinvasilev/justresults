@@ -1,6 +1,7 @@
 .createForm {
 	max-width: 50rem;
     margin: auto;
+    margin-bottom: 30px;
     width: 70%;
     padding: auto;
     display: block;
