@@ -41,7 +41,7 @@ function CreateArticle() {
 
     return (
         <div className={styles.createArticleContainer}>
-            <h2 className={styles.createArticleHeading}>Write Article</h2>
+            <h2 className={styles.createArticleHeading}>Write an Article</h2>
             <form className={styles.createArticleForm} onSubmit={onSubmitCreateArticleHandler}>
                 <label className={styles.newLineLabel} htmlFor="topic">Topic:</label>
                 <input className={styles.newLineInput} name="topic" id="topic" type="text" placeholder="Give your article a name..."/>

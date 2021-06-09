@@ -30,7 +30,10 @@ export function createArticle(data) {
     return database.ref('articles').push(data).catch(err => console.log(err.message));
 }
 export function getArticles() {
-    return database.ref('articles').get().then((snapshot) => snapshot.val()).catch(err => console.log(err.message));
+    return database.ref('articles').get().then((snapshot) => Object.fromEntries(Object.entries(snapshot.val()).reverse())).catch(err => console.log(err.message));
+}
+export function getPopularArticles() {
+    return database.ref('articles').orderByChild('likes').startAt(0).endAt(10).once('value');
 }
 export function getArticle(id) {
     return database.ref('articles').child(id).get().then((snapshot) => snapshot.val()).catch(err => console.log(err.message));

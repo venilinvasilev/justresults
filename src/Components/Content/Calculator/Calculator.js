@@ -52,7 +52,7 @@ function Calculator() {
         let targetCalories;
         switch (goal) {
             case 'gain': {
-                targetCalories = Math.trunc(bmr);
+                targetCalories = Math.trunc(bmr + 500);
                 setMessage({
                     heading: `Target Calories ${targetCalories}.`,
                     content: `Your calorie count should put you in a slight caloric surplus of around 500 calories.
@@ -67,8 +67,8 @@ function Calculator() {
                 This can help you establish a consistent, sustainable pace of weight loss.`
                 });
             } break;
-            default: {
-                targetCalories = Math.trunc(bmr - 500);
+            case 'maintain': {
+                targetCalories = Math.trunc(bmr);
                 setMessage({
                     heading: `Target Calories ${targetCalories}.`,
                     content: `Your calorie count should put you close to a level where you maintain your current weight.`
