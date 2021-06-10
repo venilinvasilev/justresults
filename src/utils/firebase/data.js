@@ -32,11 +32,6 @@ export function createArticle(data) {
 export function getArticles() {
     return database.ref('articles').get().then((snapshot) => Object.fromEntries(Object.entries(snapshot.val()).reverse())).catch(err => console.log(err.message));
 }
-// export function getPopularArticles() {
-//     return database.ref('articles').orderByChild("likes").limitToLast(2).once('value', (data) => {
-//         return Object.fromEntries(Object.entries(data.val()).sort((a, b) => b[1].likes - a[1].likes));
-//     });
-// }
 export function getPopularArticles() {
     return database.ref('articles').orderByChild("likes").limitToLast(3).get().then((data) => {
         return Object.fromEntries(Object.entries(data.val()).sort((a, b) => b[1].likes - a[1].likes));
@@ -70,3 +65,4 @@ export function editArticle(id, data) {
     console.log(id)
     return database.ref('articles').child(id).set(data);
 }
+export const articles = database.ref('articles')

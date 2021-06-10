@@ -21,7 +21,10 @@ function Login() {
         }
         loginUser(email, password)
             .then(() => history.push('/'))
-            .catch(err => console.log(err.message));
+            .catch(err => setErrorMessage({
+                heading: 'Login failed!',
+                content: err.message
+            }));
     }
     return (
         <section>

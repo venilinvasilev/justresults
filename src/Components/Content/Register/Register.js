@@ -12,7 +12,7 @@ function Register() {
         const username = ev.target.username.value;
         const email = ev.target.email.value;
         const password = ev.target.password.value;
-        if(!username || !email || !password) {
+        if (!username || !email || !password) {
             setErrorMessage({
                 heading: 'Registration failed!',
                 content: 'All fields are required.'
@@ -20,14 +20,21 @@ function Register() {
             return;
         }
         const rePassword = ev.target.rePassword.value;
-        if(password !== rePassword) {
+        if (password !== rePassword) {
             setErrorMessage({
                 heading: 'Registration failed!',
                 content: 'Passwords do not match.'
             })
             return;
         }
-        registerUser(username, email, password).then(() => history.push('/')).catch((err) => console.log);    
+        registerUser(username, email, password)
+            .then(() => history.push('/'))
+            .catch((err) => {
+                setErrorMessage({
+                    heading: 'Registration failed!',
+                    content: err.message
+                })
+            });
     }
 
     return (

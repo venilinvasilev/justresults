@@ -4,7 +4,7 @@ import ArticleContent from './ArticleContent';
 import { UserCtx } from '../../../App';
 import { useState, useEffect, useContext } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
-import { getArticle, updateLikes, getUserLiked, deleteArticle } from '../../../utils/firebase/data';
+import { getArticle, updateLikes, getUserLiked, deleteArticle, articles } from '../../../utils/firebase/data';
 import { formatDate } from '../../../utils/misc';
 function ArticleDetails() {
     const userInfo = useContext(UserCtx);
@@ -24,21 +24,21 @@ function ArticleDetails() {
         if (userInfo && userInfo !== 'guest') {
             getUserLiked(userInfo.uid, id).then((data) => setLiked(data));
         }
-    }, [userInfo]);
+    }, [userInfo, likes]);
     useEffect(() => {
         getArticle(id)
-            .then((data) => {
-                setArticle(data);
-                setLikes(data.likes);
-            })
-            .catch(err => console.log(err.message))
-    }, [likes]);
+        .then((data) => {
+            setArticle(data);
+        })
+        .catch(err => console.log(err.message))
+        articles.child(id).child('likes').on('value', (snapshot) => {
+            setLikes(snapshot.val());
+        })
+        return () => articles.child(id).child('likes').off();
+    }, []);
     const addLike = (ev) => {
         ev.preventDefault();
-        updateLikes(id, userInfo.uid).then(() => {
-            setLikes((oldLikes) => Number(oldLikes) + 1);
-            setLiked(true);
-        })
+        updateLikes(id, userInfo.uid)
     }
     const delArticle = (ev) => {
         ev.preventDefault();
