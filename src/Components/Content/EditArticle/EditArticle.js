@@ -1,15 +1,15 @@
 import styles from './EditArticle.module.css';
 
 import { useParams, useHistory } from 'react-router-dom';
-import { useContext, useState, useEffect } from 'react';
-import { UserCtx } from '../../../App';
+import { useState, useEffect } from 'react';
+//import { UserCtx } from '../../../App';
 import Loader from '../../Common/Loader'
 import { editArticle, getArticle } from '../../../utils/firebase/data';
 
 function EditArticle() {
     const { id } = useParams();
     const history = useHistory();
-    const userInfo = useContext(UserCtx);
+//    const userInfo = useContext(UserCtx);
     const [article, setArticle] = useState();
     useEffect(() => {
         getArticle(id).then((data) => setArticle(data));

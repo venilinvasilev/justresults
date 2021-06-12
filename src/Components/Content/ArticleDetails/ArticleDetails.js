@@ -24,7 +24,7 @@ function ArticleDetails() {
         if (userInfo && userInfo !== 'guest') {
             getUserLiked(userInfo.uid, id).then((data) => setLiked(data));
         }
-    }, [userInfo, likes]);
+    }, [userInfo, id, likes]);
     useEffect(() => {
         getArticle(id)
         .then((data) => {
@@ -35,7 +35,7 @@ function ArticleDetails() {
             setLikes(snapshot.val());
         })
         return () => articles.child(id).child('likes').off();
-    }, []);
+    }, [id]);
     const addLike = (ev) => {
         ev.preventDefault();
         updateLikes(id, userInfo.uid)

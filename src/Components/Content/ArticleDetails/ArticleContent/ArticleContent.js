@@ -4,7 +4,7 @@ function ArticleContent({ content }) {
     let paragraphs = content.split('\n');
     return (
         <div className={styles.articleDetailsContent}>
-            {paragraphs.map((paragraph) => <p className={styles.articleDetailsParagraph}>{paragraph}</p> )}
+            {paragraphs.map((paragraph, i) => <p key={i} className={styles.articleDetailsParagraph}>{paragraph}</p> )}
         </div>
     )
 }

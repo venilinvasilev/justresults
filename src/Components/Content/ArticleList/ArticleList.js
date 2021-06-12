@@ -3,9 +3,15 @@ import { useState, useEffect } from 'react';
 import { getArticles } from '../../../utils/firebase/data';
 import ArticleCard from './ArticleCard';
 import Loader from '../../Common/Loader';
+//import { articles as articleRef} from '../../../utils/firebase/data';
+
 function ArticleList() {
     const [articles, setArticles] = useState([]);
     useEffect(() => {
+        // Later for pagination :)
+        // articleRef.on('value', (data) => {
+        //     console.log(Object.keys(data.val()).length);
+        // });
         getArticles()
             .then(data => {
                 setArticles(data);

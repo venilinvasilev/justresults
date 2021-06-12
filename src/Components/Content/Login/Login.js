@@ -44,9 +44,9 @@ function Login() {
                         </span>
                     </p>
                     <span className={styles.input}>
-                        <input className={styles.submit} type="submit" value="Sign-In" />
+                        <input className={styles.submit} type="submit" value="Login" />
                     </span>
-                    <p className={styles.notAMember}>Not a member ? Sign-Up <Link to="/register">here</Link> and stop missing out.</p>
+                    <p className={styles.notAMember}>Not a member ? Register <Link to="/register">here</Link> and stop missing out.</p>
                 </fieldset>
             </form>
             {errorMessage ? <ModalMessage message={errorMessage} handleGotIt={() => {setErrorMessage('')}} /> : ' '}

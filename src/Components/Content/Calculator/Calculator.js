@@ -23,31 +23,33 @@ function Calculator() {
             return;
         }
         let bmr;
-        switch (sex) {
-            case 'male': {
-                bmr = (weight * 10) + (height * 6.25) + (age * 5) + 5;
-
-            } break;
-            case 'female': {
-                bmr = (weight * 10) + (height * 6.25) + (age * 5) - 161;
-            } break;
+        if(sex === 'male') {
+            bmr = (weight * 10) + (height * 6.25) + (age * 5) + 5;
+        } else {
+            bmr = (weight * 10) + (height * 6.25) + (age * 5) - 161;
         }
         switch (activity) {
             case 'sedentary': {
                 bmr *= 1.2;
-            } break;
+                break;
+            }
             case 'lightlyActive': {
                 bmr *= 1.375;
-            } break;
+                break;
+            }
             case 'moderatelyActive': {
                 bmr *= 1.550;
-            } break;
+                break;
+            }
             case 'veryActive': {
                 bmr *= 1.725;
-            } break;
+                break;
+            } 
             case 'extraActive': {
                 bmr *= 1.9;
-            } break;
+                break;
+            }
+            default: break;
         }
         let targetCalories;
         switch (goal) {
@@ -58,7 +60,8 @@ function Calculator() {
                     content: `Your calorie count should put you in a slight caloric surplus of around 500 calories.
                     This can help you establish a consistent, sustainable pace of weight gain.`
                 });
-            } break;
+                break;
+            }
             case 'lose': {
                 targetCalories = Math.trunc(bmr * 0.8);
                 setMessage({
@@ -66,7 +69,8 @@ function Calculator() {
                     content: `Your calorie count should put you in a slight caloric deficit of around 200-700 calories.
                 This can help you establish a consistent, sustainable pace of weight loss.`
                 });
-            } break;
+                break;
+            }
             case 'maintain': {
                 targetCalories = Math.trunc(bmr);
                 setMessage({
@@ -75,6 +79,7 @@ function Calculator() {
                 });
                 break;
             }
+            default: break;
         }
 
     }
