@@ -14,6 +14,10 @@ import ArticleList from './ArticleList';
 import ArticleDetails from './ArticleDetails';
 import EditArticle from './EditArticle';
 import Calculator from './Calculator';
+import Profile from './Profile';
+import Supplements from './Supplements';
+import AddSupplement from './AddSupplement';
+import Checkout from './Checkout';
 function Content() {
     return (
         <div className={styles.siteContent}>
@@ -25,7 +29,11 @@ function Content() {
                     <Route path="/articles" exact component={ArticleList} />
                     <Route path="/articles/:id" component={ArticleDetails} />
                     <Route path="/edit/:id" component={EditArticle} />
+                    <Route path="/supplements" component={Supplements} />
+                    <Route path="/add-supplement" component={AddSupplement} />
                     <Route path="/calculator" exact component={Calculator} />
+                    <Route path="/profile" exact component={Profile} />
+                    <Route path="/checkout" exact component={Checkout} />
                 </Switch>
         </div>
     );

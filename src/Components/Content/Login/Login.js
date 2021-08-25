@@ -1,30 +1,36 @@
 import styles from './Login.module.css';
 import { Link, useHistory } from 'react-router-dom';
 import { useState } from 'react';
-import { loginUser } from '../../../utils/firebase/data';
+import { useDispatch } from 'react-redux';
+import { userAuthActions } from '../../../store/auth-slice';
+import { loginUser } from '../../../utils/api/data';
 import ModalMessage from '../../Common/ModalMessage';
 
 function Login() {
     const history = useHistory();
     const [errorMessage, setErrorMessage] = useState('');
-
-    const onSubmitLoginHandler = (e) => {
+    const dispatch = useDispatch();
+    const onSubmitLoginHandler = async (e) => {
         e.preventDefault();
-        const email = e.target.email.value;
+        const username = e.target.username.value;
         const password = e.target.password.value;
-        if(!email || !password) {
+        if(!username || !password) {
             setErrorMessage({
                 heading: 'Login failed!',
                 content: 'All fields are required.'
             })
             return;
         }
-        loginUser(email, password)
-            .then(() => history.push('/'))
-            .catch(err => setErrorMessage({
+        try {
+            const user = await loginUser({ username, password });
+            dispatch({ type: userAuthActions.AUTH_LOGIN, payload: user });
+            history.push('/');
+        } catch (err) {
+            setErrorMessage({
                 heading: 'Login failed!',
                 content: err.message
-            }));
+            });
+        }
     }
     return (
         <section>
@@ -32,9 +38,9 @@ function Login() {
                 <fieldset className={styles.loginFieldset}>
                     <legend className={styles.loginLegend}>Login</legend>
                     <p className={styles.field}>
-                        <label className={styles.inputLabel} htmlFor='email'>Email</label>
+                        <label className={styles.inputLabel} htmlFor='username'>Username or Email</label>
                         <span className={styles.input}>
-                            <input type="text" name="email" placeholder="Your email..." />
+                            <input type="text" name="username" placeholder="Type your username or email here..." />
                         </span>
                     </p>
                     <p className={styles.field}>

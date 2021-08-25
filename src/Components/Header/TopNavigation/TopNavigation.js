@@ -1,10 +1,13 @@
 import styles from './TopNavigation.module.css';
-import { useState, useContext, useEffect } from 'react';
-import { UserCtx } from '../../../App';
+
+import { useState, useEffect, Fragment } from 'react';
 import { Link } from 'react-router-dom';
-/*onclick="this.classList.toggle('opened');this.setAttribute('aria-expanded', this.classList.contains('opened'))"*/
+import { useSelector, useDispatch } from 'react-redux';
+import { userAuthActions } from '../../../store/auth-slice';
+import { logoutUser } from '../../../utils/api/data';
 function TopNavigation() {
-    const userInfo = useContext(UserCtx);
+    const dispatch = useDispatch();
+    const userAuth = useSelector((state) => state.userAuth);
     const [menuStyles, setMenuStyles] = useState([styles.menu])
     const [dropDown, setDropdown] = useState(styles.dropDownMenuInactive);
     useEffect(() => {
@@ -14,7 +17,7 @@ function TopNavigation() {
         }
     }, [])
     const handleClick = (ev) => {
-        if(ev.target.tagName !== 'BUTTON' && ev.target.tagName !== 'svg' && ev.target.tagName !== 'path' && ev.target.tagName !== 'A') {
+        if (ev.target.tagName !== 'BUTTON' && ev.target.tagName !== 'svg' && ev.target.tagName !== 'path' && ev.target.tagName !== 'A') {
             setDropdown(styles.dropDownMenuInactive);
             setMenuStyles([styles.menu]);
         }
@@ -30,6 +33,15 @@ function TopNavigation() {
             return oldStyles.concat(styles.opened)
         })
     }
+    const handleLogout = async () => {
+        try {
+            await logoutUser();
+            dispatch({ type: userAuthActions.AUTH_LOGOUT });
+        } catch (err) {
+            alert(err.message);
+        }
+
+    }
     return (
         <div>
             <button className={menuStyles.join(' ')} onClick={toggleMenu}>
@@ -41,13 +53,18 @@ function TopNavigation() {
             </button>
             <div className={dropDown}>
                 <Link className={styles.linkItem} to='/articles'>Articles</Link>
-                {userInfo?.email ? <Link className={styles.linkItem} to="/create-article">Write an Article</Link> : ''}
+                {userAuth.loggedIn ? <Link className={styles.linkItem} to="/create-article">Write an Article</Link> : ''}
+                <Link className={styles.linkItem} to="/supplements">Supplements</Link>
+                {userAuth.role === 'admin' && <Link className={styles.linkItem} to="/add-supplement">Add Supplement</Link>}
                 <Link className={styles.linkItem} to="/calculator">Calculator</Link>
-                {!userInfo?.email ? <div>
+                {!userAuth.loggedIn ? <div>
                     <Link className={styles.linkItem} to="/login">Login</Link>
                     <Link className={styles.linkItem} to="/register">Register</Link>
                 </div> :
-                    <Link className={styles.linkItem} to="/logout">Logout</Link>
+                    <Fragment>
+                        <Link className={styles.linkItem} to="/profile">My Profile</Link>
+                        <Link className={styles.linkItem} onClick={handleLogout} to="/">Logout</Link>
+                    </Fragment>
                 }
 
             </div>

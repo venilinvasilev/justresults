@@ -1,11 +1,11 @@
 import styles from './ArticleCard.module.css';
 import { Link } from 'react-router-dom';
 function ArticleCard({
-    authorName,
+    author,
     description,
-    dateCreated,
+    createdAt,
     topic,
-    likes,
+    likesCount,
     id
 }) {
     const formatDate = (timestamp) => {
@@ -23,9 +23,9 @@ function ArticleCard({
             <h2 className={styles.articleCardTopic}>{topic}</h2>
             <p className={styles.articleDescription}>{description}</p>
             <div className={styles.articleInfo}>
-                <span className={styles.articleDate}>Date Published: <strong>{formatDate(dateCreated)}</strong></span>
-                <span className={styles.articleAuthor}>Author: <strong>{authorName}</strong></span>
-                <span className={styles.articleLikes}>Likes: <strong>{likes ? likes : 0}</strong></span>
+                <span className={styles.articleDate}>Date Published: <strong>{formatDate(createdAt)}</strong></span>
+                <span className={styles.articleAuthor}>Author: <strong>{`${author.firstName} ${author.lastName}`}</strong></span>
+                <span className={styles.articleLikes}>Likes: <strong>{likesCount}</strong></span>
                 <Link to={`/articles/${id}`}className={styles.articleReadMore}>Show</Link>
             </div>
         </div>

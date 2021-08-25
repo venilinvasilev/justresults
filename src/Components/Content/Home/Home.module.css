@@ -14,9 +14,9 @@
 .homeWrapper {
     width: 90%;
     margin: auto;
-    display: flex;
     flex-wrap: wrap;
 }
+
 .homeSection {
     width: 90%;
     border: 1px solid silver;

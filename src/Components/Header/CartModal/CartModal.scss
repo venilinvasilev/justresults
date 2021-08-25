@@ -1,0 +1,11 @@
+.cart {
+    border: 1px solid white;
+    padding: 40px;
+    background-color: black;
+    position: fixed;
+    width: 1000px;
+    top: 50vh;
+    left: 50vw;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+}

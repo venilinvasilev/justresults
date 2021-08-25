@@ -4,17 +4,15 @@ import ArticleCard from '../ArticleList/ArticleCard';
 import Loader from '../../Common/Loader';
 
 import { useState, useEffect } from 'react';
-import { getPopularArticles } from '../../../utils/firebase/data';
+import { getAllArticles } from '../../../utils/api/data';
+
 function Home() {
     const [articles, setArticles] = useState([]);
     useEffect(() => {
-        getPopularArticles()
-            .then(data => {
-                setArticles(data);
-            })
-            .catch(err => console.log(err))
+        getAllArticles('?sort=-likesCount&limit=5').then(articles => {
+            setArticles(articles);
+        })
     }, []);
-
     return (
         <div className={styles.homeWrapper}>
             <div className={styles.homeSection}>

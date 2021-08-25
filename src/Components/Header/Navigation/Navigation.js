@@ -1,7 +1,5 @@
 import styles from './Navigation.module.css';
 
-import { useContext } from 'react';
-import { UserCtx } from '../../../App';
 import { NavLink } from 'react-router-dom';
 
 function Navigation() {

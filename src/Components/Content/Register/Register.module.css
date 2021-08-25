@@ -1,5 +1,5 @@
 .registerForm {
-	max-width: 30rem;
+	max-width: 40rem;
     margin: auto;
     margin-bottom: 30px;
     width: 50%;
@@ -41,6 +41,20 @@
 
 .field .input input {
 	border-radius: 5px;
+    border: 1px;
+    border-color: white;
+	flex: 1 1 auto;
+	padding: 0.8rem;
+	outline: none;
+	background: rgba(255,255,255, 0.5);
+	z-index: 2;
+	order: 2;
+    margin-top: 10px;
+}
+textarea {
+    margin-top: 10px;
+    height: 300px;
+    border-radius: 5px;
     border: 1px;
     border-color: white;
 	flex: 1 1 auto;

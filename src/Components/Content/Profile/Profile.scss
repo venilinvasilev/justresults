@@ -1,0 +1,54 @@
+.profile {
+    max-width: 900px;
+    margin: 0 auto 32px auto;
+    .profile__heading {
+        text-align: center;
+    }
+    .profile__info {
+        background-color: #353b37;
+        padding: 46px;
+        .info__title {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 24px;
+        }
+        .info__profile-card {
+            max-width: 450px;
+            margin: auto;
+            text-align: center;
+            .profile-card__photo {
+                margin-bottom: 20px;
+                img {
+                    max-width: 100px;
+                    height: auto;
+                    border-radius: 50%;
+                }
+            }
+            p {
+                margin: 0;
+            }
+            .profile-card__username {
+                font-size: 22px;
+                font-weight: bold;
+                margin: 0 auto 5px auto;
+                text-transform: uppercase;
+            }
+            .profile-card__role {
+                font-size: 14px;
+                font-style: italic;
+            }
+            .profile-card__data-title {
+                text-align: center;
+                margin-bottom: 30px;
+                font-size: 24px;
+            }
+            .profile-card__data {
+                text-align: left;
+                p {
+                    font-size: 18px;
+                    margin: 0px auto 10px auto;
+                }
+            }
+        }
+    }
+}

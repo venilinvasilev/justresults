@@ -1,80 +1,59 @@
 import styles from './ArticleDetails.module.css';
 import Loader from '../../Common/Loader';
 import ArticleContent from './ArticleContent';
-import { UserCtx } from '../../../App';
-import { useState, useEffect, useContext } from 'react';
+
+import { useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import { useParams, useHistory } from 'react-router-dom';
-import { getArticle, updateLikes, getUserLiked, deleteArticle, articles } from '../../../utils/firebase/data';
+import { useReducerWithThunk } from '../../../hooks/useReducerWithThunk';
+
+import articleDetailsReducer, { initialState, likeArticle, setArticleData } from './articleDetailsReducer';
+
 import { formatDate } from '../../../utils/misc';
+
 function ArticleDetails() {
-    const userInfo = useContext(UserCtx);
-    const history = useHistory();
     const { id } = useParams();
-    const [article, setArticle] = useState();
-    const [likes, setLikes] = useState();
-    const [liked, setLiked] = useState(false);
-    const [isOwner, setIsOwner] = useState(false);
+    const history = useHistory();
+    const user = useSelector((state) => state.userAuth);
+    const [details, dispatch] = useReducerWithThunk(articleDetailsReducer, initialState);
 
     useEffect(() => {
-        if (userInfo && article && userInfo.uid === article.authorId) {
-            setIsOwner(true);
-        }
-    }, [article, userInfo])
-    useEffect(() => {
-        if (userInfo && userInfo !== 'guest') {
-            getUserLiked(userInfo.uid, id).then((data) => setLiked(data));
-        }
-    }, [userInfo, id, likes]);
-    useEffect(() => {
-        getArticle(id)
-        .then((data) => {
-            setArticle(data);
-        })
-        .catch(err => console.log(err.message))
-        articles.child(id).child('likes').on('value', (snapshot) => {
-            setLikes(snapshot.val());
-        })
-        return () => articles.child(id).child('likes').off();
-    }, [id]);
-    const addLike = (ev) => {
-        ev.preventDefault();
-        updateLikes(id, userInfo.uid)
+        if(!user._id) return;        
+        dispatch(setArticleData(id, user._id));
+    }, [user]);
+
+    const likeHandler = async () => {
+        dispatch(likeArticle(details.article._id, details.article.likes));
     }
-    const delArticle = (ev) => {
-        ev.preventDefault();
-        const confirmed = window.confirm('Are you sure you want to delete this article ?');
-        if (confirmed) {
-            deleteArticle(id).then(() => history.push('/articles'));
-        }
-    }
+
     const goToEdit = () => {
-        history.push('/edit/' + id);
+        history.push('/edit/' + details.article._id);
     }
-
+    
     return (
         <div className={styles.articleDetailsWrapper}>
-            {article ?
+            {details.article.loaded ?
                 <div className={styles.articleDetailsContainer}>
-                    <h1 className={styles.articleDetailsHeading}>{article.topic}</h1>
-                    <h3 className={styles.articleDetailsDescription}>{article.description}</h3>
-                    <ArticleContent content={article.content} />
+                    <h1 className={styles.articleDetailsHeading}>{details.article.topic}</h1>
+                    <h3 className={styles.articleDetailsDescription}>{details.article.description}</h3>
+                    <ArticleContent content={details.article.content} />
                     <div className={styles.articleControls}>
-                        {!liked && userInfo !== 'guest' ?
-                            <button onClick={addLike} title="Like" className={styles.likeButton}><i className="far fa-thumbs-up fa-2x"></i>Like</button> :
+                        {user.role !== 'guest' && !details.ui.hasLiked ?
+                            <button onClick={likeHandler} title="Like" className={styles.likeButton}><i className="far fa-thumbs-up fa-2x"></i>Like</button> :
                             ''
                         }
-                        {isOwner ?
+                        {details.ui.isAuthor ?
                             <span>
-                                <button onClick={delArticle} title="Delete" className={styles.deleteButton}><i className="fas fa-trash-alt fa-2x"></i>Delete</button>
+                                <button title="Delete" className={styles.deleteButton}><i className="fas fa-trash-alt fa-2x"></i>Delete</button>
                                 <button onClick={goToEdit} title="Edit" className={styles.editButton}><i className="fas fa-edit fa-2x"></i>Edit</button>
                             </span> :
                             ''
                         }
                     </div>
                     <div className={styles.articleInfo}>
-                        <span className={styles.articleDate}>Date Published: {formatDate(article.dateCreated)}</span>
-                        <span className={styles.articleAuthor}>Author: {article.authorName}</span>
-                        <span className={styles.articleLikes}>Likes: {likes}</span>
+                        <span className={styles.articleDate}>Date Published: {formatDate(details.article.createdAt)}</span>
+                        <span className={styles.articleAuthor}>Author: {`${details.article.author.firstName} ${details.article.author.lastName}`}</span>
+                        <span className={styles.articleLikes}>Likes: {details.article.likesCount}</span>
                     </div>
                 </div> :
                 <Loader />

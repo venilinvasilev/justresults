@@ -1,47 +1,49 @@
 import styles from './App.module.css';
-import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
-import './utils/firebase';
-import { auth } from './utils/firebase';
-import { getUserInfo } from './utils/firebase/data';
+import "bootstrap/dist/css/bootstrap.min.css"
+import React, { useEffect } from 'react';
+
+import { BrowserRouter as Router } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { useCookies } from "react-cookie";
+
+import { userAuthCheckSession } from './store/auth-slice';
+
 import Header from './Components/Header';
 import Content from './Components/Content';
 import Footer from './Components/Footer';
-
-export let UserCtx = React.createContext();
+import { cartActions } from './store/cart-slice';
 
 function App() {
-    const [userInfo, setUserInfo] = useState();
+    const userAuth = useSelector((state) => state.userAuth);
+    const cart = useSelector((state) => state.cart);
+    const dispatch = useDispatch();
+    const [cookies, setCookie] = useCookies(userAuth.username);
     useEffect(() => {
-        auth.onAuthStateChanged((user) => {
-            if (user) {
-                getUserInfo(user.uid)
-                    .then((data) => {
-                        data.uid = user.uid;
-                        setUserInfo(data)
-                    })
-                    .catch(err => console.log(err.message));
-            } else {
-                setUserInfo('guest');
-            }
-        });
-    }, []);
-    return (
-        <Router>
-            <div className={styles.siteWrapper}>
-                <UserCtx.Provider value={userInfo}>
-                    <Header />
-                    <Content />
-                </UserCtx.Provider>
-                <Footer />
-            </div>
-            <Route path="/logout" exact render={props => {
-                    auth.signOut();
-                    return <Redirect to='/' />;
-                }
-            } />
-        </Router>
-    );
+        if(userAuth.username) {
+            setCookie(userAuth.username, JSON.stringify({
+                items: cart.items,
+                totalQuantity: cart.totalQuantity,
+                totalPrice: cart.totalPrice
+            }), {
+                path: "/"
+            });
+        }
+        if(Object.keys(cookies).length && !cart.changed && userAuth.username) {
+            dispatch({ type: cartActions.SET_USER_CART, payload: cookies[`${userAuth.username}`]});
+        }
+    }, [userAuth.username, cart.totalQuantity]);
+    useEffect(() => {
+        dispatch(userAuthCheckSession);
+    }, [dispatch])
+return (
+    <Router>
+        <div className={styles.siteWrapper}>
+            <Header />
+            <Content />
+            <Footer />
+        </div>
+    </Router>
+);
 }
 
 export default App;
