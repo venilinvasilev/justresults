@@ -1,6 +1,7 @@
-import styles from './Calculator.module.css';
+import './Calculator.scss';
 import ModalMessage from '../../Common/ModalMessage';
 import { useState } from 'react';
+import CheckBoxGroup from '../../Common/CheckBoxGroup';
 
 function Calculator() {
     const [message, setMessage] = useState('');
@@ -18,15 +19,16 @@ function Calculator() {
         if (!age || !height || !weight) {
             setMessage({
                 heading: 'Missing input fields!',
-                content: 'All fields are required in order to calculate your desired calorie intake!'
-            })
+                content:
+                    'All fields are required in order to calculate your desired calorie intake!',
+            });
             return;
         }
         let bmr;
-        if(sex === 'male') {
-            bmr = (weight * 10) + (height * 6.25) + (age * 5) + 5;
+        if (sex === 'male') {
+            bmr = weight * 10 + height * 6.25 + age * 5 + 5;
         } else {
-            bmr = (weight * 10) + (height * 6.25) + (age * 5) - 161;
+            bmr = weight * 10 + height * 6.25 + age * 5 - 161;
         }
         switch (activity) {
             case 'sedentary': {
@@ -38,18 +40,19 @@ function Calculator() {
                 break;
             }
             case 'moderatelyActive': {
-                bmr *= 1.550;
+                bmr *= 1.55;
                 break;
             }
             case 'veryActive': {
                 bmr *= 1.725;
                 break;
-            } 
+            }
             case 'extraActive': {
                 bmr *= 1.9;
                 break;
             }
-            default: break;
+            default:
+                break;
         }
         let targetCalories;
         switch (goal) {
@@ -58,7 +61,7 @@ function Calculator() {
                 setMessage({
                     heading: `Target Calories ${targetCalories}.`,
                     content: `Your calorie count should put you in a slight caloric surplus of around 500 calories.
-                    This can help you establish a consistent, sustainable pace of weight gain.`
+                    This can help you establish a consistent, sustainable pace of weight gain.`,
                 });
                 break;
             }
@@ -67,7 +70,7 @@ function Calculator() {
                 setMessage({
                     heading: `Target Calories ${targetCalories}.`,
                     content: `Your calorie count should put you in a slight caloric deficit of around 200-700 calories.
-                This can help you establish a consistent, sustainable pace of weight loss.`
+                This can help you establish a consistent, sustainable pace of weight loss.`,
                 });
                 break;
             }
@@ -75,84 +78,218 @@ function Calculator() {
                 targetCalories = Math.trunc(bmr);
                 setMessage({
                     heading: `Target Calories ${targetCalories}.`,
-                    content: `Your calorie count should put you close to a level where you maintain your current weight.`
+                    content: `Your calorie count should put you close to a level where you maintain your current weight.`,
                 });
                 break;
             }
-            default: break;
+            default:
+                break;
         }
-
-    }
+    };
     const handleGotIt = () => {
         setMessage('');
-    }
+    };
     return (
-        <div className={styles.calculatorWrapper}>
-            <h2 className={styles.calculatorHeading}>Calorie Calculator</h2>
-            <form onSubmit={calculateMacronutrients} className={styles.calculatorForm}>
-                <label htmlFor="age" className={styles.calculatorInputLabel}>Age</label>
-                <input className={styles.calculatorInputField} name="age" id="age" type="number" placeholder="Years..." />
-                <label htmlFor="sex" className={styles.calculatorInputLabel}>Sex</label>
-                <div className={styles.radioInputWrapperOne}>
-                    <div className={styles.sameLineInput}>
-                        <input className={styles.radioInput} type="radio" name="sex" id="male" value="male" defaultChecked />
-                        <label className={styles.radioLabel} htmlFor="male">Male</label>
+        <div className="container p-5 Calculator">
+            <h2 className="text-center Calculator__title">Macronutrient calculator</h2>
+            <form className="p-5 bg-light Calculator__form">
+                <div className="row justify-content-between mb-5">
+                    <div className="col-2">
+                        <label className="pr-3 text-dark d-block text-center" htmlFor="age">
+                            Age
+                        </label>
+                        <input
+                            type="number"
+                            className="form-control"
+                            aria-label="Enter your age in years"
+                            placeholder="Years"
+                            id="age"
+                        />
                     </div>
-                    <div className={styles.sameLineInput}>
-                        <input type="radio" name="sex" id="female " value="female" />
-                        <label htmlFor="female">Female</label>
+                    <div className="col-4">
+                        <label className="col-12 mb-2 text-dark mx-auto text-center">
+                            Select your gender:
+                        </label>
+                        <div className="col-10 row justify-content-between Calculator__form__gender-controls">
+                            <div className="col-6">
+                                <label className="pr-3 text-dark" htmlFor="male">
+                                    Male
+                                </label>
+                                <input
+                                    type="radio"
+                                    className="form-check-input"
+                                    name="gender"
+                                    id="male"
+                                    value="male"
+                                    defaultChecked={true}
+                                />
+                            </div>
+                            <div className="col-6 d-flex justify-content-end">
+                                <label className="pr-3 text-dark" htmlFor="female">
+                                    Female
+                                </label>
+                                <input
+                                    type="radio"
+                                    className="form-check-input"
+                                    name="gender"
+                                    id="female"
+                                    value="female"
+                                    defaultChecked={false}
+                                />
+                            </div>
+                        </div>
+                    </div>
+                    <div className="col-5 d-flex justify-content-between">
+                        <div className="col-5">
+                            <label className="pr-3 text-dark d-block text-center" htmlFor="weight">
+                                Weight
+                            </label>
+                            <input
+                                type="number"
+                                className="form-control"
+                                aria-label="Enter your weight in kilograms"
+                                placeholder="Kilograms"
+                                id="weight"
+                                name="weight"
+                            />
+                        </div>
+                        <div className="col-5">
+                            <label className="pr-3 text-dark d-block text-center" htmlFor="height">
+                                Height
+                            </label>
+                            <input
+                                type="number"
+                                className="form-control"
+                                aria-label="Enter height in centimeters"
+                                placeholder="Centimeters"
+                                id="height"
+                                name="weight"
+                            />
+                        </div>
                     </div>
                 </div>
-                <label htmlFor="height" className={styles.calculatorInputLabel}>Height</label>
-                <input className={styles.calculatorInputField} name="height" id="height" type="number" placeholder="Centimeters..." />
-                <label htmlFor="weight" className={styles.calculatorInputLabel}>Weight</label>
-                <input className={styles.calculatorInputField} name="weight" id="weight" type="number" placeholder="Kilograms..." />
-                <label htmlFor="goal" className={styles.calculatorInputLabel}>Goal</label>
-                <div className={styles.radioInputWrapper}>
-                    <div className={styles.newLineOptionWrapperTwo}>
-                        <input className={styles.radioInput} type="radio" name="goal" id="maintain" value="maintain" defaultChecked />
-                        <label className={styles.radioLabel} htmlFor="maintain">Maintain Weight</label>
+                <div className="row mb-3">
+                    <label htmlFor="goal" className="text-center text-dark">
+                        Select your goal:
+                    </label>
+                </div>
+                <div className="row justify-content-center mb-5">
+                    <div className="col-3 d-flex justify-content-center">
+                        <input
+                            type="radio"
+                            className="form-check-input"
+                            name="goal"
+                            id="lose"
+                            value="lose"
+                            defaultChecked={true}
+                        />
+                        <label className="pr-3 text-dark" htmlFor="lose">
+                            Lose weight
+                        </label>
                     </div>
-                    <div className={styles.newLineOptionWrapperTwo}>
-                        <input className={styles.radioInput} type="radio" name="goal" id="lose" value="lose" />
-                        <label className={styles.radioLabel} htmlFor="lose">Lose Weight</label>
+                    <div className="col-3 d-flex justify-content-center">
+                        <input
+                            type="radio"
+                            className="form-check-input"
+                            name="goal"
+                            id="maintain"
+                            value="maintain"
+                            defaultChecked={false}
+                        />
+                        <label className="pr-3 text-dark" htmlFor="maintain">
+                            Maintain weight
+                        </label>
                     </div>
-                    <div className={styles.newLineOptionWrapperTwo}>
-                        <input className={styles.radioInput} type="radio" name="goal" id="gain" value="gain" />
-                        <label className={styles.radioLabel} htmlFor="gain">Gain Weight</label>
+                    <div className="col-3 d-flex justify-content-center">
+                        <input
+                            type="radio"
+                            className="form-check-input"
+                            name="goal"
+                            id="gain"
+                            value="gain"
+                            defaultChecked={false}
+                        />
+                        <label className="pr-3 text-dark" htmlFor="gain">
+                            Gain weight
+                        </label>
                     </div>
                 </div>
-                <label htmlFor="activity" className={styles.calculatorInputLabel}>Current Activity Level</label>
-                <div className={styles.radioInputWrapper}>
-                    <div className={styles.newLineOptionWrapper}>
-                        <input className={styles.radioInput} type="radio" name="activity" id="sedentary" value="sedentary" defaultChecked />
-                        <label className={styles.radioLabel} htmlFor="sedentary">Sedentary (Little or no exercise)</label>
-                    </div>
-                    <div className={styles.newLineOptionWrapper}>
-                        <input className={styles.radioInput} type="radio" name="activity" id="lightlyActive" value="lightlyActive" />
-                        <label className={styles.radioLabel} htmlFor="lightlyActive">Lightly active (Light exercise/sports 3-5 days a week)</label>
-                    </div>
-                    <div className={styles.newLineOptionWrapper}>
-                        <input className={styles.radioInput} type="radio" name="activity" id="moderatelyActive" value="moderatelyActive" />
-                        <label className={styles.radioLabel} htmlFor="moderatelyActive">Moderately active (Moderate exercise/sports 3-5 days a week)</label>
-                    </div>
-                    <div className={styles.newLineOptionWrapper}>
-                        <input className={styles.radioInput} type="radio" name="activity" id="veryActive" value="veryActive" />
-                        <label className={styles.radioLabel} htmlFor="veryActive">Very active (Hard exercise/sports 6-7 days a week)</label>
-                    </div>
-                    <div className={styles.newLineOptionWrapper}>
-                        <input className={styles.radioInput} type="radio" name="activity" id="extraActive" value="extraActive" />
-                        <label className={styles.radioLabel} htmlFor="extraActive">Extra active (Hard exercise/sports 6-7 days a week + physical job)</label>
+                <div className="row">
+                    <label htmlFor="" className="text-dark text-center mb-3">
+                        Select your desired activity level:
+                    </label>
+                </div>
+                <div className="row justify-content-center">
+                    <div className="col-10 d-flex flex-column">
+                        <div>
+                            <input
+                                type="radio"
+                                className="form-check-input"
+                                name="activity"
+                                id="sedentary"
+                                value="sedentary"
+                                defaultChecked={true}
+                            />
+                            <label className="pr-3 text-dark" htmlFor="sedentary">
+                                Sedentary (Little or no exercise)
+                            </label>
+                        </div>
+                        <div>
+                            <input
+                                type="radio"
+                                className="form-check-input"
+                                name="activity"
+                                id="lightlyActive"
+                                value="lightlyActive"
+                                defaultChecked={false}
+                            />
+                            <label className="pr-3 text-dark" htmlFor="lightlyActive">
+                                Lightly active (Light exercise/sports 3-5 days a week)
+                            </label>
+                        </div>
+                        <div>
+                            <input
+                                type="radio"
+                                className="form-check-input"
+                                name="activity"
+                                id="moderatelyActive"
+                                value="moderatelyActive"
+                                defaultChecked={false}
+                            />
+                            <label className="pr-3 text-dark" htmlFor="moderatelyActive">
+                                Moderately active (Moderate exercise/sports 3-5 days a week)
+                            </label>
+                        </div>
+                        <div>
+                            <input
+                                type="radio"
+                                className="form-check-input"
+                                name="activity"
+                                id="veryActive"
+                                value="veryActive"
+                                defaultChecked={false}
+                            />
+                            <label className="pr-3 text-dark" htmlFor="veryActive">
+                                Very active (Hard exercise/sports 6-7 days a week)
+                            </label>
+                        </div>
+                        <div>
+                            <input
+                                type="radio"
+                                className="form-check-input"
+                                name="activity"
+                                id="extraActive"
+                                value="extraActive"
+                                defaultChecked={false}
+                            />
+                            <label className="pr-3 text-dark" htmlFor="extraActive">
+                                Extra active (Hard exercise/sports 6-7 days a week, plus physical
+                                job)
+                            </label>
+                        </div>
                     </div>
                 </div>
-                <div className={styles.buttonsWrapper}>
-                    <input className={styles.submitButton} type="reset" value="Clear Fields" />
-                    <input className={styles.submitButton} type="submit" value="Calculate" />
-                </div>
-
-
             </form>
-            {message.content ? <ModalMessage message={message} handleGotIt={handleGotIt} /> : ''}
         </div>
     );
 }

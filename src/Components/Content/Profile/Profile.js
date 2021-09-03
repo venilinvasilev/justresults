@@ -35,7 +35,7 @@ export default function Profile() {
             <div className="profile__info">
                 <div className="info__profile-card">
                     <div className="profile-card__photo">
-                        <img src="./default-profile.png" />
+                        <img src="./default-profile.png" alt={user.firstName} />
                     </div>
                     <p className="profile-card__username">{`${user.firstName} ${user.lastName}`}</p>
                     <p className="profile-card__role">{user.role.charAt(0).toUpperCase() + user.role.slice(1)}</p>

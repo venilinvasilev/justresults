@@ -1,32 +1,45 @@
-import styles from './ArticleCard.module.css';
+import './ArticleCard.scss';
 import { Link } from 'react-router-dom';
-function ArticleCard({
-    author,
-    description,
-    createdAt,
-    topic,
-    likesCount,
-    id
-}) {
-    const formatDate = (timestamp) => {
-        const date = new Date(timestamp);
-        const year = date.getFullYear();
-        const month = date.getMonth() + 1 < 10 ? `0${date.getMonth() + 1}` : date.getMonth() + 1;
-        const day = date.getDate() < 10 ? `0${date.getDate()}` : date.getDate();
-        const hours = date.getHours() < 10 ? `0${date.getHours()}` : date.getHours();
-        const minutes = date.getMinutes() < 10 ? `0${date.getMinutes()}` : date.getMinutes();
-        const seconds = date.getSeconds() < 10 ? `0${date.getSeconds()}` : date.getSeconds();
-        return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}`;
-    }
+import { formatDate, truncate } from '../../../../utils/misc';
+
+function ArticleCard({ article }) {
     return (
-        <div className={styles.articleCardContainer}>
-            <h2 className={styles.articleCardTopic}>{topic}</h2>
-            <p className={styles.articleDescription}>{description}</p>
-            <div className={styles.articleInfo}>
-                <span className={styles.articleDate}>Date Published: <strong>{formatDate(createdAt)}</strong></span>
-                <span className={styles.articleAuthor}>Author: <strong>{`${author.firstName} ${author.lastName}`}</strong></span>
-                <span className={styles.articleLikes}>Likes: <strong>{likesCount}</strong></span>
-                <Link to={`/articles/${id}`}className={styles.articleReadMore}>Show</Link>
+        <div className="col-12 col-lg-6 col-xl-4 ArticleCard">
+            <div className="card bg-dark p-4 mb-3">
+                <img
+                    className="card-img-top"
+                    src={`./protein_isolate_now_foods.jpg`}
+                    alt={article.topic}
+                />
+                <div className="card-body px-0 ArticleCard__body">
+                    <h5 className="card-title ArticleCard__title">{article.topic}</h5>
+                    <p className="card-text">{truncate(article.description, 64, true)}</p>
+                    <div className="d-flex align-items-center justify-content-between mb-3">
+                        <div className="d-flex justify-content-between">
+                            <i className="far fa-calendar p-1"></i>
+                            <div className="d-inline-block p-1 ArticleCard__date">
+                                {formatDate(article.createdAt)}
+                            </div>
+                        </div>
+                        <div className="d-flex justify-content-between">
+                            <i className="far fa-thumbs-up fa p-1"></i>
+                            <div className="d-inline-block p-1">{article.likesCount}</div>
+                        </div>
+                        {/* <div className="d-flex justify-content-between">
+                            <i className="fas fa-user p-1"></i>
+                            <div className="d-inline-block p-1">{`${article.author.firstName} ${article.author.lastName}`}</div>
+                        </div> */}
+                    </div>
+                    <div className="d-flex justify-content-end">
+                        <Link
+                            to={`/articles/${article._id}`}
+                            className="btn p-1           btn-light ArticleCard__link"
+                        >
+                            <i className="fas fa-arrow-right text-dark p-1"></i>
+                            <div className="d-inline-block text-dark p-1">Read more</div>
+                        </Link>
+                    </div>
+                </div>
             </div>
         </div>
     );

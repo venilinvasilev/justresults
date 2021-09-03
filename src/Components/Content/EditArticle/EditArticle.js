@@ -1,5 +1,5 @@
-import { useParams, useHistory } from 'react-router-dom';
-import { useEffect, useRef, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 
 import ArticleForm from '../../Common/ArticleForm/ArticleForm';
 import { editArticle, getArticle } from '../../../utils/api/data';
@@ -20,7 +20,7 @@ function EditArticle() {
                 content: data.content
             });
         })
-    }, []);
+    }, [id]);
 
     return (
         <ArticleForm onSubmitRequest={editArticle} title={title} article={article} />

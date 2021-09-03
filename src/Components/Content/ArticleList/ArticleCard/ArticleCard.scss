@@ -1,0 +1,16 @@
+.ArticleCard {
+    font-size: 1.6rem;
+    &__body {
+        padding-top: 2.5rem;
+    }
+    &__title {
+        font-size: 1.9rem;
+        margin-bottom: 2rem;
+    }
+    &__date {
+        font-size: 1.3rem;
+    }
+    &__button {
+        font-size: 1.5rem;
+    }
+}

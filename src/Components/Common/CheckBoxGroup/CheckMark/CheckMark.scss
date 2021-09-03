@@ -1,0 +1,14 @@
+.CheckMark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 2rem;
+    width: 2rem;
+    border-radius: 50%;
+    background-color: #eee;
+    &::after {
+        content: '';
+        position: absolute;
+        display: none;
+    }
+}

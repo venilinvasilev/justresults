@@ -21,6 +21,7 @@ const cartReducer = (state = initialState, action) => {
     switch(action.type) {
         case cartActions.SET_USER_CART: {
             return {
+                changed: true,
                 ...state,
                 ...action.payload
             }
@@ -37,7 +38,6 @@ const cartReducer = (state = initialState, action) => {
                 newItem.totalPrice = newItem.price;
                 items.push(newItem);
             }
-            console.log(state.totalQuantity);
             return {
                 ...state,
                 changed: true,

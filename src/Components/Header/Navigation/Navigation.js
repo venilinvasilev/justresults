@@ -1,37 +1,31 @@
-import styles from './Navigation.module.css';
+import './Navigation.scss';
 
-import { NavLink } from 'react-router-dom';
+import { useState, useRef } from 'react';
+
+import Cart from './Cart';
+import Hamburger from './Hamburger';
+import Menu from './Menu';
 
 function Navigation() {
-    const userInfo = useContext(UserCtx);
-    return (userInfo ?
-        <nav className={styles.navWrapper}>
-            <div>
-                <NavLink className={styles.siteNavLink} activeClassName={styles.siteActiveNavLink} to="/workouts">Workout Programs</NavLink>
-                {userInfo?.email ?
-                    <NavLink className={styles.siteNavLink} activeClassName={styles.siteActiveNavLink} to="/create-workout">Create Workout</NavLink>
-                    : 
-                    ''
-                }
-                <NavLink className={styles.siteNavLink} activeClassName={styles.siteActiveNavLink} to="/calculator">Calculator</NavLink>
-            </div>
-            <div>
-                {userInfo?.email ?
-                    <>
-                    <span>Wellcome back, {userInfo.username}!</span>
-                    <NavLink className={styles.siteNavLink} activeClassName={styles.siteActiveNavLink} exact to="/logout">Logout</NavLink>
-                    </>
-                    :
-                    <div>
-                        <NavLink className={styles.siteNavLink} activeClassName={styles.siteActiveNavLink} exact to="/login">Login</NavLink>
-                        <NavLink className={styles.siteNavLink} activeClassName={styles.siteActiveNavLink} exact to="/register">Register</NavLink>
-                    </div>
-                }
-
-            </div>
-        </nav> :
-        ''
-    )
+    const [isActive, setIsActive] = useState(false);
+    const hamburgerButton = useRef();
+    const closeMenu = (ev) => {
+        if (ev.code === 'Escape' && isActive) {
+            hamburgerButton.current.focus();
+            setIsActive(false);
+        }
+    };
+    return (
+        <nav onKeyDown={closeMenu} className="offset-2 col-4 d-flex px-md-5 Navigation">
+            <Cart />
+            <Hamburger
+                hamburgerButton={hamburgerButton}
+                isActive={isActive}
+                setIsActive={setIsActive}
+            />
+            <Menu hamburgerButton={hamburgerButton} isActive={isActive} setIsActive={setIsActive} />
+        </nav>
+    );
 }
 
 export default Navigation;

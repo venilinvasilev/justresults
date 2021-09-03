@@ -8,7 +8,6 @@ function ArticleList() {
     const [articles, setArticles] = useState([]);
     useEffect(() => {
         getAllArticles().then((data) => {
-            console.log(data);
             setArticles(data)
         })
     }, []);
@@ -17,7 +16,7 @@ function ArticleList() {
         <div className={styles.articleListContainer}>
             <h2 className={styles.articleListHeading}>Articles</h2>
             {articles && articles.length ?
-                articles.map(article => <ArticleCard id={article._id} key={article._id} {...article} />) :
+                articles.map(article => <ArticleCard id={article._id} key={article._id} article={article} />) :
                 <Loader />
             }
         </div>

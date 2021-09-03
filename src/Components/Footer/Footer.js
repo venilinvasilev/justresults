@@ -1,11 +1,9 @@
-import styles from './Footer.module.css';
+import './Footer.scss';
 
 function Footer() {
     return (
-        <footer>
-            <div className={styles.siteFooter}>
-                <p>Site created by V.Vasilev All rights reserved</p>
-            </div>
+        <footer className="Footer">
+            <p className="Footer__text">Site created by Venilin Vasilev All rights reserved</p>
         </footer>
     );
 }

@@ -21,7 +21,6 @@ export default function SupplementForm ({fetchHandler, title, supplement}) {
             imageUrl: ev.target.imageUrl.value,
             description: ev.target.description.value
         }
-        console.log(data);
         try {
             const newSupplement = await fetchHandler(data, id);
             history.push(`/supplements/${newSupplement._id}`);

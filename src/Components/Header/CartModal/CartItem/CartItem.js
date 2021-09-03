@@ -15,7 +15,7 @@ export default function CartItem({supplement}) {
     return (
         <div className="row border-top border-bottom">
             <div className="row main align-items-center">
-                <div className="col-2"><img className="img-fluid" src={`http://localhost:3000/${supplement.imageUrl}`} /></div>
+                <div className="col-2"><img className="img-fluid" src={`http://localhost:3000/${supplement.imageUrl}`} alt={supplement.name} /></div>
                 <div className="col">
                     <div className="row text-light">{supplement.name}</div>
                     <div className="row">{supplement.brand}</div>

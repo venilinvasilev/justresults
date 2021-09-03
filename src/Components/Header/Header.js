@@ -1,22 +1,16 @@
-import { useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
-import Cart from './Cart';
-import CartModal from './CartModal';
-import styles from './Header.module.css';
+import './Header.scss';
 
 import Logo from './Logo';
-//import Navigation from './Navigation';
-import TopNavigation from './TopNavigation';
+//import TopNavigation from './TopNavigation';
+import CartModal from './CartModal';
+import Navigation from './Navigation/Navigation';
+
 function Header() {
-    const location = useLocation();
-    useEffect(() => {
-        console.log(location.pathname)
-    }, [location]);
     return (
-        <div className={styles.headerContainer}>
+        <div className="row align-content-center px-0 pt-3 Header">
             <Logo />
-            <Cart />
-            <TopNavigation />
+
+            <Navigation onKe />
             <CartModal />
         </div>
     );
